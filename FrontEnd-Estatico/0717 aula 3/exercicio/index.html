@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Formulário</title>
+</head>
+
+<body>
+  <main>
+    <form>
+      <fieldset>
+        <legend>Dados pessoais</legend>
+        <label for="nome">Nome: </label>
+        <input required type="text" name="nome" id="nome">
+        <label for="telefone">Telefone: </label>
+        <input required type="text" name="telefone" id="telefon">
+        <label for="nascimento">Data de nascimento: </label>
+        <input required type="date" name="nascimento" id="nascimento">
+        <label for="idade">Idade: </label>
+        <input required type="number" name="idade" min="0" id="idade">
+        <label for="email">Email: </label>
+        <input required type="email" name="email" id="email">
+        <label for="senha">Senha: </label>
+        <input required type="password" name="senha" id="senha">
+        <input required type="checkbox" name="aceito-termos" id="aceito-termos" />
+        <label for="aceito-termos"> Aceito os termos e condições </label>
+
+        <div class="buttons">
+          <button class="btnSubmit" type="submit">Enviar</button>
+          <button class="btnLimpar" type="reset">Limpar</button>
+        </div>
+      </fieldset>
+    </form>
+  </main>
+</body>
+
+</html>
