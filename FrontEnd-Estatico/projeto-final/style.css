@@ -1,17 +1,32 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap');
+
+/* * {
   box-sizing: border-box;
-}
+} */
+
 .foto-bg {
-  position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; */
+  object-fit: cover;
+}
+/* 
+.area-bg {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+} */
+
+.fonte{
+  font-family: 'Dancing Script', cursive;
 }
 
-.area-bg{
-  position: relative;
-    min-height: 100vh;
-    /* display: flex;
-    flex-direction: column; */
+.area-usuario{
+  display: flex;
+}
+.area-usuario a{
+  color: #fff;
 }
