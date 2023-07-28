@@ -27,9 +27,9 @@
 .area-usuario{
   display: flex;
 }
-.area-usuario a{
+/* .area-usuario a{
   color: #fff;
-}
+} */
 
 .img-offer{
   width: 175px;
