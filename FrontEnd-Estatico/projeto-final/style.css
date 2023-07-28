@@ -37,8 +37,8 @@
 }
 
 .imagem-menu{
-  width: 152px;
-  height: 144px;
+  max-width: 100%;
+    max-height: 145px;
 }
 
 .img-box{
