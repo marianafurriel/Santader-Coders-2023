@@ -6,6 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css"
+    integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <link rel="stylesheet" href="./style.css">
   <link href="./css/font-awesome.css" rel="stylesheet">
   <title>Feane</title>
@@ -76,7 +83,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-md-7 col-lg-6 ">
-                  <h1 class="fonte">Fast Food Restaurant1</h1>
+                  <h1 class="fonte">Fast Food Restaurant2</h1>
                   <p>Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam
                     quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil
                     ducimus libero ipsam.</p>
@@ -90,7 +97,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-md-7 col-lg-6 ">
-                  <h1 class="fonte">Fast Food Restaurant1</h1>
+                  <h1 class="fonte">Fast Food Restaurant3</h1>
                   <p>Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam
                     quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil
                     ducimus libero ipsam.</p>
@@ -338,21 +345,187 @@
               middle
               of
               text. All</p>
-              <div class="row">
-                <div class="col-md-7 col-sm-7">
-                  <a href="" class="btn btn-warning text-white rounded-5 px-5 py-2 mb-5">Read more</a>
+            <div class="row">
+              <div class="col-md-7 col-sm-7">
+                <a href="" class="btn btn-warning text-white rounded-5 px-5 py-2 mb-5">Read more</a>
 
-                </div>
               </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <section>
+    <div class="container my-5">
+      <h6 class="display-6 fonte fw-semibold col-sm-12 col-md-6 offset-lg-1 col-lg-5">Book A Table</h6>
+      <div class="row">
+        <div class="col-sm-12 col-md-6 offset-lg-1 col-lg-5">
+          <div class="formulario">
+            <form action="" class="d-flex flex-column">
+              <input type="text" class="my-2 px-3 py-2 border border-secondary rounded-1" placeholder="Your Name">
+              <input type="text" class="my-2 px-3 py-2  border border-secondary" placeholder="Phone Number">
+              <input type="email" class="my-2 px-3 py-2  border border-secondary" placeholder="Your Email">
+              <select class="form-select my-2 py-2 border border-secondary" aria-label="Default select example">
+                <option selected disabled>How many persons?</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+              <input type="date" class="my-2 px-3 py-2" placeholder="dd/mm/aaaa">
+            </form>
+            <a href="" class="btn btn-warning text-white rounded-5 px-5 py-2 mt-4">Book Now</a>
+          </div>
+        </div>
+        <div class=" col-sm-12 col-md-6 col-lg-6">
+          <div class="map-container w-100 h-100 d-flex ps-md-3 ps-sm-0 mt-sm-5 mt-5 mt-md-0">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100622.7130751371!2d2.2685033992602324!3d48.855500330584924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2zUGFyaXMsIEZyYW7Dp2E!5e0!3m2!1spt-BR!2sbr!4v1690555709744!5m2!1spt-BR!2sbr"
+              class="w-100 h-100" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <p class="fonte display-6 fw-semibold text-center">What Says Our Customers</p>
+      <div id="carouselExampleIndicators" class="carousel slide">
+        <!-- <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div> -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row mb-5">
+              <div class="col-12 col-sm-12 offset-md-2 col-md-4 me-md-5 ">
+                <div>
+                  <p class="bg-dark text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor
+                    incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam</p>
+                  <img src="./images/client1.jpg" class="border border-warning border-5 rounded-circle" width="100"
+                    height="100" alt="">
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-4">
+                <div>
+                  <p class="bg-dark text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor
+                    incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam</p>
+                  <img src="./images/client2.jpg" class="border border-warning border-5 rounded-circle" width="100"
+                    height="100" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row mb-5">
+              <div class="col-12 col-sm-12 offset-md-2 col-md-4 me-md-5 ">
+                <div>
+                  <p class="bg-dark text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor
+                    incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam</p>
+                  <img src="./images/client1.jpg" class="border border-warning border-5 rounded-circle" width="100"
+                    height="100" alt="">
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-4">
+                <div>
+                  <p class="bg-dark text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor
+                    incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam</p>
+                  <img src="./images/client2.jpg" class="border border-warning border-5 rounded-circle" width="100"
+                    height="100" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row mb-5">
+              <div class="col-12 col-sm-12 offset-md-2 col-md-4 me-md-5 ">
+                <div>
+                  <p class="bg-dark text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor
+                    incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam</p>
+                  <img src="./images/client1.jpg" class="border border-warning border-5 rounded-circle" width="100"
+                    height="100" alt="">
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-4">
+                <div class=>
+                  <p class="bg-dark text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor
+                    incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam</p>
+                  <img src="./images/client2.jpg" class="border border-warning border-5 rounded-circle" width="100"
+                    height="100" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-1 p-0 text-center">
+              <button class="bg-transparent border-0" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon border border-5 border-warning rounded-circle bg-warning" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="bg-transparent border-0" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon border border-5 border-warning rounded-circle bg-warning" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row">
+
+        <div class="col-12 col-sm-12 col-md-6">
+          <div class="w-50">
+            <p class="bg-dark text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam</p>
+            <img src="./images/client1.jpg" width="100" height="100" alt="">
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6">
+          <div class="w-50">
+            <p class="bg-dark text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam</p>
+            <img src="./images/client2.jpg" width="100" height="100" alt="">
+          </div>
+        </div>
+      </div> -->
+
+    </div>
+  </section>
+  <section>oioioioi<br><br><br><br><br><br><br></section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+    integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
     crossorigin="anonymous"></script>
+  <script src="./script.js"></script>
 </body>
 
 </html>
