@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+.fonte{
+  font-family: 'Dancing Script', cursive;
+}
+
+/* Estilo normal dos links do menu */
+.nav-link {
+  color: white;
+}
+
+/* Estilo quando o mouse passa por cima dos links do menu */
+.nav-link:hover {
+  color: #ffbe33;
+}
+
+.foto-bg {
+    object-fit: cover;
+  }
+
+
+.area-usuario{
+  display: flex;
+}
+
+.img-offer{
+  border-radius: 100%;
+  width: 175px;
+  height: 175px;
+}
+
+.imagem-menu{
+  max-width: 100%;
+    max-height: 145px;
+}
+
+.img-box{
+  border-radius: 0px 0px 0px 45px;
+}
+
+.shopping-cart{
+  width: 23px;
+  height: 23px;
+}
+
+.img-sobre{
+  width: 100%;
+    max-width: 445px;
+}
+
+/* Configuração imagem do card de ofertas */
+
+.borda-img-card{
+  overflow: hidden;
+
+}
+.card_offer{
+  overflow: hidden;
+}
+
+.card_offer img{
+  transition: transform .5s ease;
+}
+
+.card_offer:hover img{
+  transform: scale(1.5);
+}
+
+/* Fim configuração card de ofertas */
