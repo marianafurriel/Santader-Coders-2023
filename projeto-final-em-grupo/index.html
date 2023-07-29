@@ -68,14 +68,24 @@
 
     <!-- Inicio carrossel -->
     <section>
-      <div class="z-1 text-white mt-0 mt-md-3 mt-lg-5 border border-warning d-flex flex-column">
-        <div id="carousel-header" class="carousel slide my-5 py-3 mx-lg-5" data-bs-ride="carousel">
+      <div class="text-white mt-0 mt-md-3 mt-lg-5l">
+        <div id="carousel-header" class="carousel slide my-5 py-3 mx-lg-5 d-flex flex-column-reverse justify-content-start" data-bs-ride="carousel">
+          <div class="container z-1">
+            <div class="d-flex align-content-center my-5 mx-0 bolinhas-div carousel-indicators">
+              <div data-bs-target="#carousel-header" data-bs-slide-to="0" class=" active bolinha-ativa bolinha-carrossel align-self-center mx-1"
+                aria-current="true" aria-label="Slide 1"></div>
+              <div data-bs-target="#carousel-header" data-bs-slide-to="1" class="align-self-center bolinha-carrossel mx-1"
+                aria-label="Slide 2"></div>
+              <div data-bs-target="#carousel-header" data-bs-slide-to="2" class="bolinha-carrossel align-self-center mx-1"
+                aria-label="Slide 3"></div>
+            </div>
+          </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
               <div class="container">
                 <div class="row">
                   <div class="col-md-7 col-lg-6 ">
-                    <h1 class="fonte">Fast Food Restaurant1</h1>
+                    <h1 class="fonte">Fast Food Restaurant 1</h1>
                     <p>Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam
                       quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos
                       nihil
@@ -91,7 +101,7 @@
               <div class="container">
                 <div class="row">
                   <div class="col-md-7 col-lg-6 ">
-                    <h1 class="fonte">Fast Food Restaurant2</h1>
+                    <h1 class="fonte">Fast Food Restaurant 2</h1>
                     <p>Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam
                       quisquam esse error unde. Tem doloremque, labore, sunt repellat dolore, iste magni quos
                       nihil
@@ -107,7 +117,7 @@
               <div class="container">
                 <div class="row">
                   <div class="col-md-7 col-lg-6 ">
-                    <h1 class="fonte">Fast Food Restaurant3</h1>
+                    <h1 class="fonte">Fast Food Restaurant 3</h1>
                     <p>Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam
                       quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos
                       nihil
@@ -120,16 +130,7 @@
             </div>
           </div>
         </div>
-        <div class="container z-1">
-          <div class="d-flex align-content-center my-5 bolinhas-div border border-warning">
-            <div data-bs-target="#carousel-header" data-bs-slide-to="0" class="bolinha-ativa bolinha-carrossel align-self-center mx-1"
-              aria-current="true" aria-label="Slide 1"></div>
-            <div data-bs-target="#carousel-header" data-bs-slide-to="1" class="align-self-center bolinha-carrossel mx-1"
-              aria-label="Slide 2"></div>
-            <div data-bs-target="#carousel-header" data-bs-slide-to="2" class="bolinha-carrossel align-self-center mx-1"
-              aria-label="Slide 3"></div>
-          </div>
-        </div>
+        
       </div>
     </section>
   </div>

@@ -6,7 +6,9 @@ function handleClick(){
 
   bolinhas_carrossel.forEach((element =>{
     element.classList.remove("bolinha-ativa");
+    element.classList.remove("active");
   }))
 
   this.classList.add("bolinha-ativa")
+  this.classList.add("active")
 }

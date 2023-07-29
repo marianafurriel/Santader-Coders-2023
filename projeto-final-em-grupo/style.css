@@ -111,22 +111,33 @@
 
 /* Configuração bolinhas carrossel header */
 
+.div-carrossel{
+  display: flex !important;
+  flex-direction: column-reverse !important;
+  justify-content: left !important;
+  align-items: center !important;
+}
+
 .bolinhas-div{
   height: 20px !important;
+  position: static !important;
+  width: fit-content !important;
+
 }
 
 .bolinha-carrossel{
   width: 12px !important;
   height: 12px !important;
   border-radius: 50% !important;
-  background-color: white;
+  background-color: white !important;
+  cursor: pointer;
 }
 
-.bolinha-ativa{
+.bolinhas-div .active{
   width: 20px !important;
   height: 20px !important;
   border-radius: 50% !important;
-  background-color: #FFCA2C;
+  background-color: #FFCA2C !important;
 }
 
 /* Fim configuração bolinhas carrossel header */
