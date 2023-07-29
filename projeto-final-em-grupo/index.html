@@ -24,8 +24,8 @@
 
     <!-- Inicio navbar -->
     <header>
-      <div class="container px-6">
-        <nav class="px-6 navbar navbar-expand-md bg-transparent navbar-ligth">
+      <div class="container">
+        <nav class="navbar navbar-expand-md bg-transparent navbar-ligth">
           <a class="navbar-brand fonte text-white fs-2" href="#">Feane</a>
           <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -67,9 +67,9 @@
     <!-- Fim navbar -->
 
     <!-- Inicio carrossel -->
-    <section class="z-1 text-white mt-5">
-      <div class="border border-warning">
-        <div id="carousel-header" class="carousel slide my-5 py-3 mx-5" data-bs-ride="carousel">
+    <section>
+      <div class="z-1 text-white mt-0 mt-md-3 mt-lg-5 border border-warning d-flex flex-column">
+        <div id="carousel-header" class="carousel slide my-5 py-3 mx-lg-5" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <div class="container">
@@ -80,7 +80,8 @@
                       quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos
                       nihil
                       ducimus libero ipsam.</p>
-                    <a href="" class="btn btn-warning text-white rounded-5 px-5 py-2" aria-label="Peça agora">Order Now</a>
+                    <a href="" class="btn btn-warning text-white rounded-5 px-5 py-2" aria-label="Peça agora">Order
+                      Now</a>
                   </div>
                 </div>
               </div>
@@ -95,7 +96,8 @@
                       quisquam esse error unde. Tem doloremque, labore, sunt repellat dolore, iste magni quos
                       nihil
                       ducimus libero ipsam.</p>
-                    <a href="" class="btn btn-warning text-white rounded-5 px-5 py-2" aria-label="Peça agora">Order Now</a>
+                    <a href="" class="btn btn-warning text-white rounded-5 px-5 py-2" aria-label="Peça agora">Order
+                      Now</a>
                   </div>
                 </div>
               </div>
@@ -110,17 +112,22 @@
                       quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos
                       nihil
                       ducimus libero ipsam.</p>
-                    <a href="" class="btn btn-warning text-white rounded-5 px-5 py-2" aria-label="Peça agora">Order Now</a>
+                    <a href="" class="btn btn-warning text-white rounded-5 px-5 py-2" aria-label="Peça agora">Order
+                      Now</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="carousel-indicators">
-            <li data-bs-target="#carousel-header" data-bs-slide-to="0" class="active bolinha-carrossel"
-              aria-current="true" aria-label="Slide 1"></li>
-            <li data-bs-target="#carousel-header" data-bs-slide-to="1" class="bolinha-carrossel" aria-label="Slide 2"></li>
-            <li data-bs-target="#carousel-header" data-bs-slide-to="2" class="bolinha-carrossel" aria-label="Slide 3"></li>
+        </div>
+        <div class="container z-1">
+          <div class="d-flex z-1 my-5">
+            <div data-bs-target="#carousel-header" data-bs-slide-to="0" class="active bolinha-carrossel mx-1"
+              aria-current="true" aria-label="Slide 1"></div>
+            <div data-bs-target="#carousel-header" data-bs-slide-to="1" class="bolinha-carrossel mx-1"
+              aria-label="Slide 2"></div>
+            <div data-bs-target="#carousel-header" data-bs-slide-to="2" class="bolinha-carrossel mx-1"
+              aria-label="Slide 3"></div>
           </div>
         </div>
       </div>
@@ -180,75 +187,88 @@
         <div class="menu container">
           <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-4">
-              <div class="all pizza d-flex flex-column bg-dark p-0 rounded-top-5 rounded-bottom-4 mx-auto my-5">
-                <div class="img-box bg-light bg-gradient rounded-top-4 p-4">
-                  <img src="images/f1.png" alt="" class="imagem-menu">
-                </div>
-                <div class="description text-white m-3 text-start p-1">
-                  <h5 class="fs-5">Delicious Pizza</h5>
-                  <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus
-                    sed eaque</p>
-                  <div class="options d-flex justify-content-between px-2 mt-2">
-                    <h6 class="align-self-center">$20</h6>
-                    <a href="" class="btn btn-warning rounded-circle p-2"><img src="images/shopping-cart.png" alt=""
-                        class="shopping-cart"></a>
+              <div class="card-menu">
+                <div class="all pizza d-flex flex-column bg-dark p-0 rounded-top-5 rounded-bottom-4 mx-auto my-5">
+                  <div class="img-box bg-light bg-gradient rounded-top-4 p-4">
+                    <img src="images/f1.png" alt="" class="imagem-menu">
+                  </div>
+                  <div class="description text-white m-3 text-start p-1">
+                    <h5 class="fs-5">Delicious Pizza</h5>
+                    <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
+                      repellendus
+                      sed eaque</p>
+                    <div class="options d-flex justify-content-between px-2 mt-2">
+                      <h6 class="align-self-center">$20</h6>
+                      <a href="" class="btn btn-warning rounded-circle p-2"><img src="images/shopping-cart.png" alt=""
+                          class="shopping-cart"></a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4">
-              <div class="all pizza d-flex flex-column bg-dark p-0 rounded-top-5 rounded-bottom-4 mx-auto my-5">
-                <div class="img-box bg-light bg-gradient rounded-top-4 p-4 ">
-                  <img src="images/f2.png" alt="" class="imagem-menu">
-                </div>
-                <div class="description text-white m-3 text-start p-1">
-                  <h5 class="fs-5">Delicious Burguer</h5>
-                  <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus
-                    sed eaque</p>
-                  <div class="options d-flex justify-content-between px-2 mt-2">
-                    <h6 class="align-self-center">$15</h6>
-                    <a href="" class="btn btn-warning rounded-circle p-2"><img src="images/shopping-cart.png" alt=""
-                        class="shopping-cart"></a>
+              <div class="card-menu">
+                <div class="all pizza d-flex flex-column bg-dark p-0 rounded-top-5 rounded-bottom-4 mx-auto my-5">
+                  <div class="img-box bg-light bg-gradient rounded-top-4 p-4 ">
+                    <img src="images/f2.png" alt="" class="imagem-menu">
+                  </div>
+                  <div class="description text-white m-3 text-start p-1">
+                    <h5 class="fs-5">Delicious Burguer</h5>
+                    <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
+                      repellendus
+                      sed eaque</p>
+                    <div class="options d-flex justify-content-between px-2 mt-2">
+                      <h6 class="align-self-center">$15</h6>
+                      <a href="" class="btn btn-warning rounded-circle p-2"><img src="images/shopping-cart.png" alt=""
+                          class="shopping-cart"></a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4">
-              <div class="all pizza d-flex flex-column bg-dark p-0 rounded-top-5 rounded-bottom-4 mx-auto my-5">
-                <div class="img-box bg-light bg-gradient rounded-top-4 p-4 ">
-                  <img src="images/f3.png" alt="" class="imagem-menu">
-                </div>
-                <div class="description text-white m-3 text-start p-1">
-                  <h5 class="fs-5">Delicious Pizza</h5>
-                  <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus
-                    sed eaque</p>
-                  <div class="options d-flex justify-content-between px-2 mt-2">
-                    <h6 class="align-self-center">$20</h6>
-                    <a href="" class="btn btn-warning rounded-circle p-2"><img src="images/shopping-cart.png" alt=""
-                        class="shopping-cart"></a>
+              <div class="card-menu">
+                <div class="all pizza d-flex flex-column bg-dark p-0 rounded-top-5 rounded-bottom-4 mx-auto my-5">
+                  <div class="img-box bg-light bg-gradient rounded-top-4 p-4 ">
+                    <img src="images/f3.png" alt="" class="imagem-menu">
+                  </div>
+                  <div class="description text-white m-3 text-start p-1">
+                    <h5 class="fs-5">Delicious Pizza</h5>
+                    <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
+                      repellendus
+                      sed eaque</p>
+                    <div class="options d-flex justify-content-between px-2 mt-2">
+                      <h6 class="align-self-center">$20</h6>
+                      <a href="" class="btn btn-warning rounded-circle p-2"><img src="images/shopping-cart.png" alt=""
+                          class="shopping-cart"></a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
             <div class="col-sm-12 col-md-6 col-lg-4">
-              <div class="all pizza d-flex flex-column bg-dark p-0 rounded-top-5 rounded-bottom-4 mx-auto my-5">
-                <div class="img-box bg-light bg-gradient rounded-top-4 p-4 ">
-                  <img src="images/f4.png" alt="" class="imagem-menu">
-                </div>
-                <div class="description text-white m-3 text-start p-1">
-                  <h5 class="fs-5">Delicious Pasta</h5>
-                  <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus
-                    sed eaque</p>
-                  <div class="options d-flex justify-content-between px-2 mt-2">
-                    <h6 class="align-self-center">$18</h6>
-                    <a href="" class="btn btn-warning rounded-circle p-2"><img src="images/shopping-cart.png" alt=""
-                        class="shopping-cart"></a>
+              <div class="card-menu">
+                <div class="all pizza d-flex flex-column bg-dark p-0 rounded-top-5 rounded-bottom-4 mx-auto my-5">
+                  <div class="img-box bg-light bg-gradient rounded-top-4 p-4 ">
+                    <img src="images/f4.png" alt="" class="imagem-menu">
+                  </div>
+                  <div class="description text-white m-3 text-start p-1">
+                    <h5 class="fs-5">Delicious Pasta</h5>
+                    <p>Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem
+                      repellendus
+                      sed eaque</p>
+                    <div class="options d-flex justify-content-between px-2 mt-2">
+                      <h6 class="align-self-center">$18</h6>
+                      <a href="" class="btn btn-warning rounded-circle p-2"><img src="images/shopping-cart.png" alt=""
+                          class="shopping-cart"></a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4">
+              <div class="card-menu">
               <div class="all pizza d-flex flex-column bg-dark p-0 rounded-top-5 rounded-bottom-4 mx-auto my-5">
                 <div class="img-box bg-light bg-gradient rounded-top-4 p-4 ">
                   <img src="images/f5.png" alt="" class="imagem-menu">
@@ -264,8 +284,10 @@
                   </div>
                 </div>
               </div>
+              </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4">
+              <div class="card-menu">
               <div class="all pizza d-flex flex-column bg-dark p-0 rounded-top-5 rounded-bottom-4 mx-auto my-5">
                 <div class="img-box bg-light bg-gradient rounded-top-4 p-4 ">
                   <img src="images/f6.png" alt="" class="imagem-menu">
@@ -280,9 +302,10 @@
                         class="shopping-cart"></a>
                   </div>
                 </div>
-              </div>
+              </div></div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4">
+              <div class="card-menu">
               <div class="all pizza d-flex flex-column bg-dark p-0 rounded-top-5 rounded-bottom-4 mx-auto my-5">
                 <div class="img-box bg-light bg-gradient rounded-top-4 p-4 ">
                   <img src="images/f7.png" alt="" class="imagem-menu">
@@ -297,9 +320,10 @@
                         class="shopping-cart"></a>
                   </div>
                 </div>
-              </div>
+              </div></div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4">
+              <div class="card-menu">
               <div class="all pizza d-flex flex-column bg-dark p-0 rounded-top-5 rounded-bottom-4 mx-auto my-5">
                 <div class="img-box bg-light bg-gradient rounded-top-4 p-4 ">
                   <img src="images/f8.png" alt="" class="imagem-menu">
@@ -314,9 +338,10 @@
                         class="shopping-cart"></a>
                   </div>
                 </div>
-              </div>
+              </div></div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4">
+              <div class="card-menu">
               <div class="all pizza d-flex flex-column bg-dark p-0 rounded-top-5 rounded-bottom-4 mx-auto my-5">
                 <div class="img-box bg-light bg-gradient rounded-top-4 p-4 ">
                   <img src="images/f9.png" alt="" class="imagem-menu">
@@ -331,6 +356,7 @@
                         class="shopping-cart"></a>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           </div>
