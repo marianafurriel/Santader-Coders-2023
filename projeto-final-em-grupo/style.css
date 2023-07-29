@@ -15,7 +15,17 @@
 
 /* Estilo quando o mouse passa por cima dos links do menu */
 .nav-link:hover {
-  color: #ffbe33;
+  color: #ffbe33 !important;
+}
+
+/* Estilo normal dos icones do menu */
+.area-usuario{
+  color: white;
+}
+
+/* Estilo quando o mouse passa por cima dos icones do menu */
+.area-usuario:hover {
+  color: #ffbe33 !important;
 }
 
 .foto-bg {
@@ -56,8 +66,8 @@
 
 .borda-img-card{
   overflow: hidden;
-
 }
+
 .card_offer{
   overflow: hidden;
 }
@@ -67,7 +77,33 @@
 }
 
 .card_offer:hover img{
-  transform: scale(1.5);
+  transform: scale(1.1);
 }
 
 /* Fim configuração card de ofertas */
+
+/* Início configurações do rodapé */
+
+.icon:hover {
+  color: #ffbe33 !important;
+}
+
+/* .icon {
+  display: inline;
+  justify-content: center;
+  border-radius: 100%;
+  border-width: 8px;
+  border-color: white;
+  border-style: solid;
+} */
+
+
+
+
+/* Configuração bolinhas carrossel header */
+
+.bolinha-carrossel{
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+}
