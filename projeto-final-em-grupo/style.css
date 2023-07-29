@@ -111,12 +111,12 @@
 
 /* Configuração bolinhas carrossel header */
 
-.div-carrossel{
+/* .div-carrossel{
   display: flex !important;
   flex-direction: column-reverse !important;
   justify-content: left !important;
   align-items: center !important;
-}
+} */
 
 .bolinhas-div{
   height: 20px !important;
