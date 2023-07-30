@@ -2,8 +2,17 @@
 
 * {
   box-sizing: border-box;
+  padding: 0;
 }
 
+/* body{
+  max-width: 100vw;
+  overflow: hidden;
+} */
+
+body *{
+  border: 2px solid blue;
+}
 .fonte{
   font-family: 'Dancing Script', cursive;
 }
@@ -111,13 +120,6 @@
 
 /* Configuração bolinhas carrossel header */
 
-/* .div-carrossel{
-  display: flex !important;
-  flex-direction: column-reverse !important;
-  justify-content: left !important;
-  align-items: center !important;
-} */
-
 .bolinhas-div{
   height: 20px !important;
   position: static !important;
@@ -141,3 +143,22 @@
 }
 
 /* Fim configuração bolinhas carrossel header */
+
+/* Configuração abas menu */
+
+.aba-selecionada{
+  background-color: black;
+  color: white;
+  border-radius: 50px;
+}
+
+.filtro-menu{
+  cursor: pointer;
+}
+
+/* Fim configuração abas menu */
+
+select,select option{
+  font-family: inherit;
+  font-size: inherit;
+}
