@@ -24,7 +24,7 @@ menu_filtros.forEach(element => element.addEventListener("click", filtrarMenu))
 const items_menu = document.querySelectorAll(".item-menu");
 
 function filtrarMenu() {
-  
+  //criar variavel para evitar o this
   if (!(this.classList.contains("aba-selecionada"))) {
     menu_filtros.forEach((element => {
       element.classList.remove("aba-selecionada");
@@ -45,3 +45,41 @@ function filtrarMenu() {
 $(document).ready(function(){
   $('select').niceSelect();
 });
+
+
+function adicionadoCarrinho(){
+  alert("Produto Adicionado ao Carrinho");
+}
+
+
+
+function enviar(){
+  event.preventDefault();
+  const nome = document.getElementById("nome").value;
+  const telefone = document.getElementById("telefone").value;
+  const email = document.getElementById("email").value;
+  const pessoas = document.getElementById("pessoas").value;
+  const data = document.getElementById("data").value;
+
+  const reserva = `Nome: ${nome}\nTelefone: ${telefone}\nEmail: ${email}\nQuantidade de pessoas: ${pessoas}\nNo dia: ${data}`;
+
+  if(nome != "" || telefone != "" || email != "" || pessoas != "" || data != ""){
+    alert("Reserva feita com sucesso");
+  }else{
+    alert("Preencha todos os campos para fazer uma Reserva!");
+  }
+
+  console.log(reserva);
+  return reserva;
+}
+
+
+
+// trocar icone do menu
+const icone_menu = document.querySelector(".icone-menu");
+icone_menu.addEventListener("click",trocaIconeMenu);
+function trocaIconeMenu(){
+  this.classList.toggle("fa-times");
+  this.classList.toggle("fa-bars");
+
+}

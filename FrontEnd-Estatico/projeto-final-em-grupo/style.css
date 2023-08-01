@@ -10,9 +10,7 @@
   overflow: hidden;
 } */
 
-body *{
-  border: 2px solid blue;
-}
+
 .fonte{
   font-family: 'Dancing Script', cursive;
 }
@@ -161,4 +159,9 @@ body *{
 select,select option{
   font-family: inherit;
   font-size: inherit;
+}
+
+
+.navbar-toggler:focus{
+  box-shadow: none !important;
 }
