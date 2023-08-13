@@ -6,3 +6,5 @@ const checar_dia = (diaDeEnvio) => {
 };
 
 module.exports = { checar_dia: checar_dia };
+
+//linha de teste do wsl
