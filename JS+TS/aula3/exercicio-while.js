@@ -5,13 +5,12 @@
 // Math.round(Math.random() * 10)
 
 function sorteiaDezenas(maximo) {
-  return Math.round(Math.random() * maximo);
+  return Math.floor(Math.random() * maximo + 1);
 }
 
 function megaSena() {
   const dezenas = [];
   while (dezenas.length < 6) {
-    cont++;
     const dezenaAleatoria = sorteiaDezenas(60);
 
     if (!dezenas.includes(dezenaAleatoria)) dezenas.push(dezenaAleatoria);
@@ -19,4 +18,14 @@ function megaSena() {
   return dezenas;
 }
 
-console.log(megaSena());
+// console.log(megaSena());
+
+const array = [1, 2, 3];
+const array2 = ["4", "5", "6"];
+let array3 = array.concat(array2);
+let soma = 0;
+for (let index = 0; index < array3.length; index++) {
+  soma += array3[index];
+}
+
+console.log(soma);
