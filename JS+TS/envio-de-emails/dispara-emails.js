@@ -4,46 +4,26 @@ const { enviarEmail } = require("./envia-email");
 const { construirCorpo } = require("./constroiCorpo");
 
 const listaClientes = [
-  { nome: "Ana", email: "ana_42@gmail.com", receberNotificacoes: true },
-  {
-    nome: "Carlos",
-    email: "carlos_91@hotmail.com",
-    receberNotificacoes: false,
-  },
-  { nome: "Maria", email: "maria_18@yahoo.com", receberNotificacoes: true },
-  { nome: "Pedro", email: "pedro_27@outlook.com", receberNotificacoes: false },
-  { nome: "Lúcia", email: "lucia_58@gmail.com", receberNotificacoes: true },
-  { nome: "João", email: "joao_12@yahoo.com", receberNotificacoes: false },
-  {
-    nome: "Catarina",
-    email: "catarina_76@hotmail.com",
-    receberNotificacoes: true,
-  },
-  {
-    nome: "Miguel",
-    email: "miguel_89@outlook.com",
-    receberNotificacoes: false,
-  },
-  { nome: "Sofia", email: "sofia_7@gmail.com", receberNotificacoes: true },
-  { nome: "Rafael", email: "rafael_39@yahoo.com", receberNotificacoes: false },
-  { nome: "Isabel", email: "isabel_53@gmail.com", receberNotificacoes: true },
-  {
-    nome: "Gustavo",
-    email: "gustavo_82@hotmail.com",
-    receberNotificacoes: false,
-  },
-  { nome: "Luísa", email: "luisa_64@yahoo.com", receberNotificacoes: true },
-  { nome: "André", email: "andre_20@outlook.com", receberNotificacoes: false },
-  { nome: "Camila", email: "camila_71@gmail.com", receberNotificacoes: true },
-  { nome: "Eduardo", email: "eduardo_4@yahoo.com", receberNotificacoes: false },
-  { nome: "Clara", email: "clara_67@hotmail.com", receberNotificacoes: true },
-  { nome: "Bruno", email: "bruno_32@gmail.com", receberNotificacoes: false },
-  { nome: "Laura", email: "laura_5@outlook.com", receberNotificacoes: true },
-  {
-    nome: "Ricardo",
-    email: "ricardo_73@yahoo.com",
-    receberNotificacoes: false,
-  },
+  { nome: "Ana", email: "ana_42@gmail.com", notificacoes: true },
+  { nome: "Carlos", email: "carlos_91@hotmail.com", notificacoes: false },
+  { nome: "Maria", email: "maria_18@yahoo.com", notificacoes: true },
+  { nome: "Pedro", email: "pedro_27@outlook.com", notificacoes: false },
+  { nome: "Lúcia", email: "lucia_58@gmail.com", notificacoes: true },
+  { nome: "João", email: "joao_12@yahoo.com", notificacoes: false },
+  { nome: "Catarina", email: "catarina_76@hotmail.com", notificacoes: true },
+  { nome: "Miguel", email: "miguel_89@outlook.com", notificacoes: false },
+  { nome: "Sofia", email: "sofia_7@gmail.com", notificacoes: true },
+  { nome: "Rafael", email: "rafael_39@yahoo.com", notificacoes: false },
+  { nome: "Isabel", email: "isabel_53@gmail.com", notificacoes: true },
+  { nome: "Gustavo", email: "gustavo_82@hotmail.com", notificacoes: false },
+  { nome: "Luísa", email: "luisa_64@yahoo.com", notificacoes: true },
+  { nome: "André", email: "andre_20@outlook.com", notificacoes: false },
+  { nome: "Camila", email: "camila_71@gmail.com", notificacoes: true },
+  { nome: "Eduardo", email: "eduardo_4@yahoo.com", notificacoes: false },
+  { nome: "Clara", email: "clara_67@hotmail.com", notificacoes: true },
+  { nome: "Bruno", email: "bruno_32@gmail.com", notificacoes: false },
+  { nome: "Laura", email: "laura_5@outlook.com", notificacoes: true },
+  { nome: "Ricardo", email: "ricardo_73@yahoo.com", notificacoes: false },
 ];
 
 const veiculos = {
@@ -77,8 +57,8 @@ const veiculos = {
   ],
 };
 
-const diaDeEnvio = 1;
-const subject = "Subject";
+const diaDeEnvio = 3;
+const subject = "Marketing";
 const body = construirCorpo(veiculos);
 let bodyCliente = "";
 
