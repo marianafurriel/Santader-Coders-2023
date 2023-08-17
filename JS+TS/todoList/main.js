@@ -4,7 +4,6 @@
 // Listar todas as tarefas salvas
 // Obter uma tarefa, através de um parâmetro (id)
 
-const readline = require("readline");
 const prompt = require("prompt-sync")();
 let tracos = "-";
 
@@ -21,37 +20,72 @@ const listaTarefas = [
   { id: 10, tarefa: "Arrumar o quarto" },
 ];
 
-function adicionar(tarefa) {
+function adicionar() {
+  const tarefa = prompt("Qual tarefa deseja adicionar a lista? ");
   const proxId = listaTarefas.length + 1;
   listaTarefas.push({ id: proxId, tarefa: tarefa }); //isso aqui vai funcionar fora da função? ou precisa retornar e atribuir? R: funciona
   let multiplasTarefas = prompt("Deseja adicionar outra tarefa? S/N ");
   if (multiplasTarefas.toUpperCase() === "S") {
+    console.log("\x1b[32mTarefa removida com sucesso.\x1b[0m");
     escolhaMenu(1);
   } else if (multiplasTarefas.toUpperCase() === "N") {
     mostrarMenu();
   } else {
-    console.log("Opção inválida!");
+    console.log("\x1b[31mOpção inválida!\x1b[0m");
     mostrarMenu();
   }
 }
 
-function deletar(id) {
-  const index = listaTarefas.findIndex((item) => item.id === id);
-  if (index !== -1) {
-    listaTarefas.splice(index - 1, 1); //Revisar
+function deletar() {
+  try {
+    exibirLista2();
+    let id = prompt(
+      "Qual tarefa gostaria de remover da lista? Favor digitar o id da mesma "
+    );
+    const index = listaTarefas.findIndex((item) => item.id === parseInt(id));
+    console.log(index);
+    if (index !== -1) {
+      listaTarefas.splice(index, 1);
+      console.log("\x1b[32mTarefa removida com sucesso.\x1b[0m");
+      exibirLista2();
+      let multiplasTarefas = prompt("Deseja remover outra tarefa? S/N ");
+      if (multiplasTarefas.toUpperCase() === "S") {
+        deletar();
+      } else {
+        mostrarMenu();
+      }
+    } else {
+      console.log("\x1b[31mid não existe\x1b[0m");
+      mostrarMenu();
+    }
+  } catch (e) {
+    console.log(e.message);
   }
-  exibirLista();
 }
 
 function exibirLista() {
   console.log("Lista de tarefas: ");
   listaTarefas.forEach((item) => {
-    console.log(`${item.id} : ${item.tarefa}`);
+    console.log(`${item.id}: ${item.tarefa}`);
+  });
+  let multiplasTarefas = prompt("Deseja retornar ao menu principal? S/N ");
+  if (multiplasTarefas.toUpperCase() === "S") {
+    mostrarMenu();
+  } else {
+    sair();
+  }
+}
+
+function exibirLista2() {
+  console.log("Lista de tarefas: ");
+  listaTarefas.forEach((item) => {
+    console.log(`${item.id}: ${item.tarefa}`);
   });
 }
 
-function editar(id) {
-  // const idTarefa = parseInt(prompt('Digite o ID da tarefa que deseja editar:'));
+function editar() {
+  exibirLista2();
+  let id = prompt("Qual tarefa gostaria de editar? Favor digitar o id da mesma ");
 
   const tarefaParaEditar = listaTarefas.find(
     (tarefa) => tarefa.id === parseInt(id)
@@ -60,16 +94,31 @@ function editar(id) {
   if (tarefaParaEditar) {
     const novaTarefa = prompt("Digite a nova tarefa:");
     tarefaParaEditar.tarefa = novaTarefa;
-    console.log("Tarefa editada com sucesso!");
+    console.log("\x1b[32mTarefa editada com sucesso!\x1b[0m");
     console.log(listaTarefas);
   } else {
-    console.log("ID de tarefa inválido.");
+    console.log("\x1b[31mID de tarefa inválido.\x1b[0m");
+  }
+  let multiplasTarefas = prompt("Deseja editar outra tarefa? S/N ");
+  if (multiplasTarefas.toUpperCase() === "S") {
+    editar();
+  } else {
+    mostrarMenu();
   }
 }
 
-function retornarPorId(id) {
-  const tarefa = listaTarefas.find((item) => item.id === id);
-  return tarefa;
+function retornarPorId() {
+  const id = prompt(
+    "Qual tarefa gostaria de procurar? Favor digitar o id da mesma "
+  );
+  const tarefa = listaTarefas.find((item) => item.id === parseInt(id));
+  console.log(tarefa);
+  let multiplasTarefas = prompt("Deseja procurar outra tarefa? S/N ");
+  if (multiplasTarefas.toUpperCase() === "S") {
+    retornarPorId();
+  } else {
+    mostrarMenu();
+  }
 }
 
 function sair() {
@@ -95,7 +144,7 @@ Escolha a opção desejada digitando sua respectiva numeração:
   let opcao = parseInt(prompt());
 
   if (isNaN(opcao) || opcao < 1 || opcao > 7) {
-    console.log("Opção inválida.");
+    console.log("\x1b[31mOpção inválida.\x1b[0m");
     return mostrarMenu();
   } else {
     escolhaMenu(opcao);
@@ -105,29 +154,19 @@ Escolha a opção desejada digitando sua respectiva numeração:
 function escolhaMenu(opcao) {
   switch (opcao) {
     case 1:
-      let tarefa = prompt("Qual tarefa deseja adicionar a lista? ");
-      adicionar(tarefa);
+      adicionar();
       break;
     case 2:
-      id = prompt(
-        "Qual tarefa gostaria de editar? Favor digitar o id da mesma "
-      );
-      editar(id);
+      editar();
       break;
     case 3:
-      id = prompt(
-        "Qual tarefa gostaria de deletar? Favor digitar o id da mesma "
-      );
-      deletar(id);
+      deletar();
       break;
     case 4:
       exibirLista();
       break;
     case 5:
-      id = prompt(
-        "Qual tarefa gostaria de procurar? Favor digitar o id da mesma "
-      );
-      retornarPorId(id);
+      retornarPorId();
       break;
     case 6:
       procurarTarefa();
@@ -140,7 +179,7 @@ function escolhaMenu(opcao) {
 
 function procurarTarefa() {
   try {
-    let tarefa = prompt("Digite uma palavra que tenha no título da tarefa ");
+    const tarefa = prompt("Digite uma palavra que tenha no título da tarefa ");
     console.log(listaTarefas.filter((el) => el.tarefa.includes(tarefa)));
     let menu = prompt("Deseja procurar outra tarefa? S/N ");
     if (menu.toUpperCase() === "S") {
