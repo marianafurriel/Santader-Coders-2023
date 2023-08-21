@@ -1,7 +1,4 @@
-const { checar_opcao } = require("./checa-opcao");
-const { checar_dia } = require("./checa-dia");
 const { enviarEmail } = require("./envia-email");
-const { construirCorpo } = require("./constroiCorpo");
 
 const listaClientes = [
   { nome: "Ana", email: "ana_42@gmail.com", notificacoes: true },
@@ -57,18 +54,52 @@ const veiculos = {
   ],
 };
 
-const diaDeEnvio = 3;
+const diaDeEnvio = 1;
 const subject = "Marketing";
 const body = construirCorpo(veiculos);
-let bodyCliente = "";
 
-const disparar_emails = (listaClientes) => {
-  listaClientes.forEach((cliente) => {
-    bodyCliente = body.replace("{NOME}", cliente.nome);
-    if (checar_opcao(cliente)) enviarEmail(cliente.email, subject, bodyCliente);
-  });
-};
+//1
+function checar_dia(diaDeEnvio) {
+  const now = new Date();
+  return now.getDay() === diaDeEnvio;
+}
+
+//2
+function construirCorpo(veiculos) {
+  const corpo = `Olá, {NOME}!
+          Veja nossa ofertas de novos carros:\n
+${corpoNovosVeiculos(veiculos)}
+          =======================\n
+          E agora nossos queridinhos! Os carros mais vendidos:\n
+${corpoMaisVendidos(veiculos)}\n`;
+  return corpo;
+}
+
+function corpoNovosVeiculos(veiculos) {
+  let corpo = "";
+  for (const novoVeiculo of veiculos.novos) {
+    corpo += `          ${novoVeiculo.nomeDoCarro}\n          ${novoVeiculo.condicoesDeAquisicao} \n\n`;
+  }
+  return corpo;
+}
+
+function corpoMaisVendidos(veiculos) {
+  let corpo = "";
+  for (const maisVendido of veiculos.maisVendidos) {
+    corpo += `          ${maisVendido.nomeDoCarro}\n          ${maisVendido.condicoesDeAquisicao}\n\n`;
+  }
+  return corpo;
+}
+
+//3
+function envia_para_cliente(cliente) {
+  if (cliente.notificacoes) {
+    const bodyCliente = body.replace("{NOME}", cliente.nome);
+    enviarEmail(cliente.email, subject, bodyCliente);
+  }
+  return cliente.notificacoes;
+}
 
 if (checar_dia(diaDeEnvio)) {
-  disparar_emails(listaClientes);
+  listaClientes.forEach((cliente) => envia_para_cliente(cliente));
 }

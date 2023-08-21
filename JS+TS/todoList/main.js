@@ -23,7 +23,7 @@ const listaTarefas = [
 function adicionar() {
   const tarefa = prompt("Qual tarefa deseja adicionar a lista? ");
   const proxId = listaTarefas.length + 1;
-  listaTarefas.push({ id: proxId, tarefa: tarefa }); //isso aqui vai funcionar fora da função? ou precisa retornar e atribuir? R: funciona
+  listaTarefas.push({ id: proxId, tarefa: tarefa });
   let multiplasTarefas = prompt("Deseja adicionar outra tarefa? S/N ");
   if (multiplasTarefas.toUpperCase() === "S") {
     console.log("\x1b[32mTarefa removida com sucesso.\x1b[0m");
@@ -85,7 +85,9 @@ function exibirLista2() {
 
 function editar() {
   exibirLista2();
-  let id = prompt("Qual tarefa gostaria de editar? Favor digitar o id da mesma ");
+  let id = prompt(
+    "Qual tarefa gostaria de editar? Favor digitar o id da mesma "
+  );
 
   const tarefaParaEditar = listaTarefas.find(
     (tarefa) => tarefa.id === parseInt(id)
