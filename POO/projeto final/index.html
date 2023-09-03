@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <header>
+    <h1>CRUD Stardew Valley</h1>
+    <img src="icon.png" alt="">
+  </header>
+  <main>
+    <form action="">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" placeholder="Digite o nome do item">
+      <span>Vendível?</span>
+      <input type="radio" id="sim" name="vendivel" value="true">
+      <label for="sim">Sim</label>
+      <input type="radio" id="nao" name="vendivel" value="false">
+      <label for="nao">Não</label>
+      <label for="valor">Valor</label>
+      <input type="number" id="valor">
+      <select name="tipoItem" id="tipoItem">
+        <option value="tipoItem" disabled selected>Selecione o tipo de item</option>
+        <option value="ferramenta">Ferramenta</option>
+        <option value="peixe">Peixe</option>
+        <option value="mineral">Mineral</option>
+        <option value="plantacap">Plantação</option>
+      </select>
+    </form>
+    <br>
+    <form action="" class="ferramenta tipo">
+      <label for="encantamento">Encantamento de ferramenta</label>
+      <input type="text" id="encantamento">
+      <label for="material">Material</label>
+      <input type="text" id="material">
+    </form>
+    <br>
+    <form action="" class="peixe tipo">
+      <select name="qualidadePeixe" id="qualidadePeixe">
+        <option value="qualidade" disabled selected>Selecione a qualidade do peixe</option>
+        <option value="normal">Normal</option>
+        <option value="prata">Prata</option>
+        <option value="ouro">Ouro</option>
+        <option value="iridio">Irídio</option>
+      </select>
+      <select name="tipoPeixe" id="tipoPeixe">
+        <option value="tipoPeixe" disabled selected>Selecione a tipo do peixe</option>
+        <option value="vara">Vara de pesca</option>
+        <option value="mercadoNoturno">Mercado Noturno</option>
+        <option value="lendario">Lendário</option>
+        <option value="lendario2">Lendário II</option>
+        <option value="covo">Covo</option>
+      </select>
+      <label for="localizacaoPeixe">Localizações</label>
+      <input type="text" class="localizacaoPeixe" id="localizacaoPeixe">
+      <input type="text" class="localizacaoPeixe">
+      <button>+</button>
+    </form>
+    <br>
+    <form action="" class="minerais tipo">
+      <select name="tipoMineral" id="tipoMineral">
+        <option value="tipoMineral" disabled selected>Selecione o tipo de mineral</option>
+        <option value="coleta">Coleta</option>
+        <option value="gema">Gemas</option>
+        <option value="deGeodos">Minerais de geodos</option>
+        <option value="geodos">Geodos</option>
+      </select>
+      <input type="text" class="localizacaoMineral" id="localizacaoMineral">
+      <input type="text" class="localizacaoMineral">
+      <button>+</button>
+    </form>
+    <br>
+    <form action="" class="plantacoes tipo">
+      <select name="estacao" id="estacao">
+        <option value="estacao" disabled selected>Selecione a estacao de plantio</option>
+        <option value="primavera">Primavera</option>
+        <option value="verao">Verão</option>
+        <option value="outono">Outono</option>
+        <option value="inverno">Inverno</option>
+      </select>
+      <select name="qualidadePlantacao" id="qualidadePlantacao">
+        <option value="qualidadePlantacao" disabled selected>Selecione a qualidade da plantação</option>
+        <option value="normal">Normal</option>
+        <option value="prata">Prata</option>
+        <option value="ouro">Ouro</option>
+        <option value="iridio">Irídio</option>
+      </select>
+      <label for="tempo">Tempo para colheita</label>
+      <input type="number">
+    </form>
+  </main>
+</body>
+
+</html>
