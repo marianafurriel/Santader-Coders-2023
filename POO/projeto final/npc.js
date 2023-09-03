@@ -9,7 +9,7 @@ class Npc {
   }
 }
 
-class Presenteaveis extends Npc {
+class Presenteavel extends Npc {
   #aniversario;
   #melhoresPresentes;
   constructor(nome, endereco, trabalho, aniversario, melhoresPresentes) {
@@ -19,7 +19,7 @@ class Presenteaveis extends Npc {
   }
 }
 
-class Casaveis extends Presenteaveis {
+class Casavel extends Presenteavel {
   #presentesPossiveis;
   constructor(
     nome,

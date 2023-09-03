@@ -1,3 +1,36 @@
+class Npc {
+  #nome;
+  #endereco;
+  constructor(nome, endereco) {
+    this.#nome = nome;
+    this.#endereco = endereco;
+  }
+}
+
+class Presenteavel extends Npc {
+  #aniversario;
+  #melhoresPresentes;
+  constructor(nome, endereco, aniversario, melhoresPresentes) {
+    super(nome, endereco);
+    this.#aniversario = aniversario;
+    this.#melhoresPresentes = melhoresPresentes;
+  }
+}
+
+class Casavel extends Presenteavel {
+  #presentesPossiveis;
+  constructor(
+    nome,
+    endereco,
+    aniversario,
+    melhoresPresentes,
+    presentesPossiveis
+  ) {
+    super(nome, endereco, aniversario, melhoresPresentes);
+    this.#presentesPossiveis = presentesPossiveis;
+  }
+}
+
 class ControleFormularios {
   static exibeFormPresenteavel() {
     const formPresenteavel = document.querySelector("#formPresenteavel");
@@ -25,42 +58,44 @@ class ControleFormularios {
 }
 
 class ListaNpc {
-  #npcs = [];
-  static adicionarNpc() {
+  static gerarNpc() {
     const nome = document.querySelector("#nome").value;
     const endereco = document.querySelector("#endereco").value;
     const presenteavel = document.querySelector("#presenteavel").checked;
+    const presentes = [
+      document.querySelector("#presentes1").value,
+      document.querySelector("#presentes2").value,
+    ];
     const aniversario = document.querySelector("#aniversario").value;
     const casavel = document.querySelector("#casavel").checked;
-    const presentesPossiveis1 = document.querySelector(
-      "#presentesPossiveis1"
-    ).value;
-    const presentesPossiveis2 = document.querySelector(
-      "#presentesPossiveis2"
-    ).value;
-    console.log(
-      "nome:",
-      nome,
-      "ende:",
-      endereco,
-      "presente:",
-      presenteavel,
-      "niver:",
-      aniversario,
-      "casavel:",
-      casavel,
-      "presente1:",
-      presentesPossiveis1,
-      "presente2:",
-      presentesPossiveis2
-    );
-    const npc = new Npc()
+    const presentesPossiveis = [
+      document.querySelector("#presentesPossiveis1").value,
+      document.querySelector("#presentesPossiveis2").value,
+    ];
+    if (casavel) {
+      const npc = new Casavel(
+        nome,
+        endereco,
+        aniversario,
+        presentes,
+        presentesPossiveis
+      );
+      return npc;
+    } else if (presenteavel) {
+      const npc = new Presenteavel(nome, endereco, aniversario, presentes);
+      return npc;
+    } else {
+      const npc = new Npc(nome, endereco);
+      return npc;
+    }
   }
 }
 
+const npcs = [];
 ControleFormularios.exibeFormPresenteavel();
 ControleFormularios.exibeFormCasavel();
 const botaoAdicionar = document.querySelector("#adicionar");
 botaoAdicionar.addEventListener("click", () => {
-  ListaNpc.adicionarNpc();
+  npcs.push(ListaNpc.gerarNpc());
+  console.log(npcs);
 });
