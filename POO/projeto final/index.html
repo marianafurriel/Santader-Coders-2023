@@ -4,95 +4,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
 
 <body>
   <header>
-    <h1>CRUD Stardew Valley</h1>
-    <img src="icon.png" alt="">
+    <img src="assets/imgs/icone1.png" alt="" class="icone">
+    <h1>Stardew Valley NPCs</h1>
+    <img src="assets/imgs/icone2.png" alt="" class="icone">
   </header>
   <main>
-    <form action="">
-      <label for="nome">Nome</label>
-      <input type="text" id="nome" placeholder="Digite o nome do item">
-      <span>Vendível?</span>
-      <input type="radio" id="sim" name="vendivel" value="true">
-      <label for="sim">Sim</label>
-      <input type="radio" id="nao" name="vendivel" value="false">
-      <label for="nao">Não</label>
-      <label for="valor">Valor</label>
-      <input type="number" id="valor">
-      <select name="tipoItem" id="tipoItem">
-        <option value="tipoItem" disabled selected>Selecione o tipo de item</option>
-        <option value="ferramenta">Ferramenta</option>
-        <option value="peixe">Peixe</option>
-        <option value="mineral">Mineral</option>
-        <option value="plantacap">Plantação</option>
-      </select>
-    </form>
-    <br>
-    <form action="" class="ferramenta tipo">
-      <label for="encantamento">Encantamento de ferramenta</label>
-      <input type="text" id="encantamento">
-      <label for="material">Material</label>
-      <input type="text" id="material">
-    </form>
-    <br>
-    <form action="" class="peixe tipo">
-      <select name="qualidadePeixe" id="qualidadePeixe">
-        <option value="qualidade" disabled selected>Selecione a qualidade do peixe</option>
-        <option value="normal">Normal</option>
-        <option value="prata">Prata</option>
-        <option value="ouro">Ouro</option>
-        <option value="iridio">Irídio</option>
-      </select>
-      <select name="tipoPeixe" id="tipoPeixe">
-        <option value="tipoPeixe" disabled selected>Selecione a tipo do peixe</option>
-        <option value="vara">Vara de pesca</option>
-        <option value="mercadoNoturno">Mercado Noturno</option>
-        <option value="lendario">Lendário</option>
-        <option value="lendario2">Lendário II</option>
-        <option value="covo">Covo</option>
-      </select>
-      <label for="localizacaoPeixe">Localizações</label>
-      <input type="text" class="localizacaoPeixe" id="localizacaoPeixe">
-      <input type="text" class="localizacaoPeixe">
-      <button>+</button>
-    </form>
-    <br>
-    <form action="" class="minerais tipo">
-      <select name="tipoMineral" id="tipoMineral">
-        <option value="tipoMineral" disabled selected>Selecione o tipo de mineral</option>
-        <option value="coleta">Coleta</option>
-        <option value="gema">Gemas</option>
-        <option value="deGeodos">Minerais de geodos</option>
-        <option value="geodos">Geodos</option>
-      </select>
-      <input type="text" class="localizacaoMineral" id="localizacaoMineral">
-      <input type="text" class="localizacaoMineral">
-      <button>+</button>
-    </form>
-    <br>
-    <form action="" class="plantacoes tipo">
-      <select name="estacao" id="estacao">
-        <option value="estacao" disabled selected>Selecione a estacao de plantio</option>
-        <option value="primavera">Primavera</option>
-        <option value="verao">Verão</option>
-        <option value="outono">Outono</option>
-        <option value="inverno">Inverno</option>
-      </select>
-      <select name="qualidadePlantacao" id="qualidadePlantacao">
-        <option value="qualidadePlantacao" disabled selected>Selecione a qualidade da plantação</option>
-        <option value="normal">Normal</option>
-        <option value="prata">Prata</option>
-        <option value="ouro">Ouro</option>
-        <option value="iridio">Irídio</option>
-      </select>
-      <label for="tempo">Tempo para colheita</label>
-      <input type="number">
-    </form>
+    <section>
+      <form action="">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome"><br>
+
+        <label for="endereco">Endereco</label>
+        <input type="text" id="endereco"><br>
+
+        <!-- <label for="trabalho">Trabalho</label>
+        <input type="text" name="trabalho" id="\trabalho"><br> -->
+
+        <span>Presenteavel?</span>
+        <input type="radio" id="naoPresenteavel" name="presenteavel" value="0">
+        <label for="naoPresenteavel">Não</label>
+        <input type="radio" id="presenteavel" name="presenteavel" value="1">
+        <label for="presenteavel">Sim</label>
+      </form>
+      <form action="" id="formPresenteavel">
+        <label for="aniversario">Aniversario</label>
+        <input type="text" id="aniversario"><br> <label for="presentes">Melhores presentes</label>
+        <input type="text" id="presentes" class="presente">
+        <input type="text" class="presente"><br>
+        <span>Casavel?</span>
+        <input type="radio" id="naoCasavel" name="casavel" value="0">
+        <label for="naoCasavel">Não</label>
+        <input type="radio" id="casavel" name="casavel" value="1">
+        <label for="casavel">Sim</label>
+      </form>
+      <form action="" id="formCasavel">
+        <label for="presentesPossiveis1">Presentes possiveis</label>
+        <input type="text" id="presentesPossiveis1">
+        <input type="text" id="presentesPossiveis2">
+      </form>
+      <button id="adicionar">Adicionar NPC</button>
+    </section>
+    <section>
+      <div class="card">
+        <div class="dados">
+          <span id="nomeSpan">NOME</span>
+          <!-- <img src="assets/imgs/home.png" alt=""><span id="enderecoSpan">Armazem do Pierre</span> -->
+          <span id="aniversarioSpan">13 do outono</span>
+          <span>Casavel</span>
+          <span id="presente1Span">Ametistas</span>
+          <span id="presente2Span">Fragmentos prismaticos</span>
+          <span id="presentePossivel1Span">Omelete</span>
+          <span id="presentePossivel2Span">Panquecas</span>.
+        </div>
+        <div class="icone" </div>
+        </div>
+    </section>
   </main>
+  <script src="script.js"></script>
 </body>
 
 </html>

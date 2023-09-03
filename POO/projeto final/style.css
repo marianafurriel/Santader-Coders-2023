@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 10px;
+  border: 1px solid red;
+}
+
+span {
+  padding: 0;
+}
+
+#formCasavel,
+#formPresenteavel {
+  display: none;
+}
