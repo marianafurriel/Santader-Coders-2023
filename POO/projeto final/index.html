@@ -16,7 +16,7 @@
   </header>
   <main>
     <section>
-      <form action="">
+      <form action="" class="formulario">
         <label for="nome">Nome</label>
         <input type="text" id="nome"><br>
 
@@ -32,7 +32,7 @@
         <input type="radio" id="presenteavel" name="presenteavel" value="1">
         <label for="presenteavel">Sim</label>
       </form>
-      <form action="" id="formPresenteavel">
+      <form action="" id="formPresenteavel" class="formulario">
         <label for="aniversario">Aniversario</label>
         <input type="text" id="aniversario"><br> <label for="presentes">Melhores presentes</label>
         <input type="text" id="presentes1">
@@ -43,7 +43,7 @@
         <input type="radio" id="casavel" name="casavel" value="1">
         <label for="casavel">Sim</label>
       </form>
-      <form action="" id="formCasavel">
+      <form action="" id="formCasavel" class="formulario">
         <label for="presentesPossiveis1">Presentes possiveis</label>
         <input type="text" id="presentesPossiveis1">
         <input type="text" id="presentesPossiveis2">
@@ -51,10 +51,9 @@
       <button id="adicionar">Adicionar NPC</button>
     </section>
     <section>
-      <div class="card">
-        <div class="dados">
+      <div class="npcs">
+        <div class="npc">
           <span id="nomeSpan">NOME</span>
-          <!-- <img src="assets/imgs/home.png" alt=""><span id="enderecoSpan">Armazem do Pierre</span> -->
           <span id="aniversarioSpan">13 do outono</span>
           <span>Casavel</span>
           <span id="presente1Span">Ametistas</span>
@@ -62,8 +61,7 @@
           <span id="presentePossivel1Span">Omelete</span>
           <span id="presentePossivel2Span">Panquecas</span>.
         </div>
-        <div class="icone" </div>
-        </div>
+      </div>
     </section>
   </main>
   <script src="script.js"></script>

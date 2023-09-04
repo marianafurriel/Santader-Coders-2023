@@ -12,3 +12,34 @@ span {
 #formPresenteavel {
   display: none;
 }
+
+.npcs {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.npc {
+  margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 380px) {
+  .npcs {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .npcs {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .npcs {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
