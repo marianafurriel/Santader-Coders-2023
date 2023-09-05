@@ -61,36 +61,37 @@ class ManipularDom {
   static atualizarLista() {
     const divNpcs = document.querySelector(".npcs");
     const npcAtual = npcs[qtdNpcs - 1];
-    console.log(npcAtual);
     const novoNpc = `<div class="npc">
   <span id="nomeSpan">Nome:${npcAtual.nome}</span>
   <span id="enderecoSpan">Nome:${npcAtual.endereco}</span>
   <span id="aniversarioSpan">${
     npcAtual.aniversario !== undefined ? "niver: " + npcAtual.aniversario : ""
   }</span>
-  <span>Casavel? ${npcAtual instanceof Casavel ? "Sim" : "Não"}</span>
+  <span>${
+    Npc.prototype.instancia(npcAtual) === "Casavel" ? "Casável" : ""
+  }</span>
   <span id="presente1Span">${
-    npcAtual.melhoresPresentes !== undefined
+    Npc.prototype.instancia(npcAtual) === "Presenteavel"
       ? npcAtual.melhoresPresentes[0]
       : ""
   }</span>
   <span id="presente2Span">${
-    npcAtual.melhoresPresentes !== undefined
+    Npc.prototype.instancia(npcAtual) === "Presenteavel"
       ? npcAtual.melhoresPresentes[1]
       : ""
   }</span>
   <span id="presentePossivel1Span">${
-    npcAtual.presentesPossiveis !== undefined
+    Npc.prototype.instancia(npcAtual) === "Casavel"
       ? npcAtual.presentesPossiveis[0]
       : ""
   }</span>
   <span id="presentePossivel1Span">${
-    npcAtual.presentesPossiveis !== undefined
+    Npc.prototype.instancia(npcAtual) === "Casavel"
       ? npcAtual.presentesPossiveis[1]
       : ""
   }</span>
 </div>`;
-    divNpcs.innerHTML = divNpcs.innerHTML + novoNpc;
+    divNpcs.innerHTML += novoNpc;
   }
   static exibeFormPresenteavel() {
     const formPresenteavel = document.querySelector("#formPresenteavel");
@@ -125,24 +126,11 @@ class ManipularDom {
 }
 
 class ListaNpc {
-  // constructor() {}
-  // get npcs() {
-  //   return ListaNpc.npcs;
-  // }
-  // get qtdNpcs() {
-  //   return ListaNpc.qtdNpcs;
-  // }
-
-  // static addNpc(npc) {
-  //   ListaNpc.npcs.push(npc);
-  // }
   static adicionarNpc() {
     const npc = ListaNpc.gerarNpc();
-    // console.log(typeof ListaNpc.npcs);
     npcs.push(npc);
     qtdNpcs++;
   }
-
   static gerarNpc() {
     const nome = document.querySelector("#nome").value;
     const endereco = document.querySelector("#endereco").value;
@@ -174,8 +162,17 @@ class ListaNpc {
       return npc;
     }
   }
-  static atualizarLista() {}
 }
+
+Npc.prototype.instancia = function (o) {
+  if (o instanceof Casavel) {
+    return "Casavel";
+  }
+  if (o instanceof Presenteavel) {
+    return "Presenteavel";
+  }
+};
+console.log(Npc.prototype);
 const npcs = [];
 let qtdNpcs = 0;
 ManipularDom.init();
