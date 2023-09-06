@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   <title>Document</title>
 </head>
 
@@ -34,7 +36,8 @@
       </form>
       <form action="" id="formPresenteavel" class="formulario">
         <label for="aniversario">Aniversario</label>
-        <input type="text" id="aniversario"><br> <label for="presentes">Melhores presentes</label>
+        <input type="text" id="aniversario"><br>
+        <label for="presentes1">Melhores presentes</label>
         <input type="text" id="presentes1">
         <input type="text" id="presentes2"><br>
         <span>Casavel?</span>
@@ -61,14 +64,65 @@
           <span id="presentePossivel1Span">Omelete</span>
           <span id="presentePossivel2Span">Panquecas</span>
           <div class="botoes">
-            <button>Editar</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">Editar</button>
             <button>Deletar</button>
           </div>
         </div>
       </div>
     </section>
+    <!--Modal de edição-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="" class="formulario">
+              <label for="nomeEditar">Nome</label>
+              <input type="text" id="nomeEditar"><br>
+
+              <label for="enderecoEditar">Endereco</label>
+              <input type="text" id="enderecoEditar"><br>
+
+              <span>Presenteavel?</span>
+              <input type="radio" id="naoPresenteavelEditar" name="presenteavelEditar" value="0">
+              <label for="naoPresenteavelEditar">Não</label>
+              <input type="radio" id="presenteavelEditar" name="presenteavelEditar" value="1">
+              <label for="presenteavelEditar">Sim</label>
+            </form>
+            <form action="" id="formPresenteavelEditar" class="formulario">
+              <label for="aniversarioEditar">Aniversario</label>
+              <input type="text" id="aniversarioEditar"><br>
+              <label for="presentes1Editar">Melhores presentes</label>
+              <input type="text" id="presentes1Editar">
+              <input type="text" id="presentes2Editar"><br>
+              <span>Casavel?</span>
+              <input type="radio" id="naoCasavelEditar" name="casavelEditar" value="0">
+              <label for="naoCasavelEditar">Não</label>
+              <input type="radio" id="casavelEditar" name="casavelEditar" value="1">
+              <label for="casavelEditar">Sim</label>
+            </form>
+            <form action="" id="formCasavelEditar" class="formulario">
+              <label for="presentesPossiveis1Editar">Presentes possiveis</label>
+              <input type="text" id="presentesPossiveis1Editar">
+              <input type="text" id="presentesPossiveis2Editar">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
   <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
