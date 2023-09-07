@@ -63,6 +63,7 @@ class Casavel extends Presenteavel {
 
 class ManipularDom {
   static init() {
+    ManipularDom.atualizarLista();
     ManipularDom.controlaFormCasavel();
     ManipularDom.controlaFormPresenteavel();
     // const formularios = [...document.querySelectorAll(".formulario")];
@@ -79,6 +80,8 @@ class ManipularDom {
     divNpcs.innerHTML = "";
     npcs.forEach((npcAtual) => {
       //div de cada NPC
+      npcAtual = Npc.prototype.toObject(npcAtual);
+      console.log(npcAtual);
       const divNpc = document.createElement("div");
       divNpc.classList.add("npc");
 
@@ -324,8 +327,11 @@ class ManipularDom {
 
 class ListaNpc {
   static adicionarNpc() {
-    const npc = ListaNpc.gerarNpc();
+    const npc = Npc.prototype.toJson(ListaNpc.gerarNpc());
     npcs.push(npc);
+    // npcsJson = JSON.stringify(localStorage.getItem("npcs"));
+    localStorage.setItem("npcs", JSON.stringify(npcs));
+    localStorage.setItem("qtdNpcs", qtdNpcs);
     qtdNpcs++;
   }
   static gerarNpc() {
@@ -419,27 +425,65 @@ class ListaNpc {
   }
 }
 
-const teste = new Casavel();
-const teste2 = new Presenteavel();
-Npc.prototype.instancia = function (o) {
-  if (o instanceof Casavel) {
+Npc.prototype.instancia = function (objeto) {
+  if (objeto instanceof Casavel) {
     return "Casavel";
-  }
-  if (o instanceof Presenteavel) {
+  } else if (objeto instanceof Presenteavel) {
     return "Presenteavel";
-  }
-  if (o instanceof Npc) {
+  } else if (objeto instanceof Npc) {
     return "Npc";
   }
 };
-console.log(
-  "teste se casavel é presenteavel: ",
-  Npc.prototype.instancia(teste) === "Presenteavel"
-);
-console.log(
-  "teste se casavel é presenteavel: ",
-  Npc.prototype.instancia(teste2)
-);
-let npcs = [];
-let qtdNpcs = 0;
+
+Npc.prototype.toJson = function (objeto) {
+  if (objeto instanceof Casavel) {
+    return {
+      nome: objeto.nome,
+      endereco: objeto.endereco,
+      aniversario: objeto.aniversario,
+      melhoresPresentes: objeto.melhoresPresentes,
+      presentesPossiveis: objeto.presentesPossiveis,
+    };
+  } else if (objeto instanceof Presenteavel) {
+    return {
+      nome: objeto.nome,
+      endereco: objeto.endereco,
+      aniversario: objeto.aniversario,
+      melhoresPresentes: objeto.melhoresPresentes,
+    };
+  }
+  if (objeto instanceof Npc) {
+    return {
+      nome: objeto.nome,
+      endereco: objeto.endereco,
+    };
+  }
+};
+
+Npc.prototype.toObject = function (objetoLiteral) {
+  if (objetoLiteral.presentesPossiveis) {
+    return new Casavel(
+      objetoLiteral.nome,
+      objetoLiteral.endereco,
+      objetoLiteral.aniversario,
+      objetoLiteral.melhoresPresentes,
+      objetoLiteral.presentesPossiveis
+    );
+  } else if (objetoLiteral.aniversario) {
+    return new Presenteavel(
+      objetoLiteral.nome,
+      objetoLiteral.endereco,
+      objetoLiteral.aniversario,
+      objetoLiteral.melhoresPresentes
+    );
+  } else {
+    return new Npc(objetoLiteral.nome, objetoLiteral.endereco);
+  }
+};
+
+if (!localStorage.getItem("npcs")) {
+  localStorage.setItem("npcs", JSON.stringify([]));
+}
+let npcs = JSON.parse(localStorage.getItem("npcs"));
+let qtdNpcs = localStorage.getItem("qtdNpcs") || 0;
 ManipularDom.init();
