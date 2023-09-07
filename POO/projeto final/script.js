@@ -33,8 +33,12 @@ class Presenteavel extends Npc {
   get melhoresPresentes() {
     return this.#melhoresPresentes;
   }
-  // set nome(nome) {
-  // }
+  set aniversario(aniversario) {
+    this.#aniversario = aniversario;
+  }
+  set melhoresPresentes(melhoresPresentes) {
+    this.#melhoresPresentes = melhoresPresentes;
+  }
 }
 
 class Casavel extends Presenteavel {
@@ -51,6 +55,9 @@ class Casavel extends Presenteavel {
   }
   get presentesPossiveis() {
     return this.#presentesPossiveis;
+  }
+  set presentesPossiveis(presentesPossiveis) {
+    this.#presentesPossiveis = presentesPossiveis;
   }
 }
 
@@ -266,6 +273,7 @@ class ManipularDom {
     salvarEdicao.textContent = "Save changes";
     salvarEdicao.addEventListener("click", () => {
       ListaNpc.editarNpc(npcEditar);
+      console.log(npcs);
       ManipularDom.atualizarLista();
     });
 
@@ -338,21 +346,55 @@ class ListaNpc {
     }
   }
   static editarNpc(npc) {
-    const nomeNovo = document.querySelector("#nomeEditar").value;
-    const endereco = document.querySelector("#endereco").value;
+    const nome = document.querySelector("#nomeEditar").value;
+    const endereco = document.querySelector("#enderecoEditar").value;
+    const presenteavel = document.querySelector("#presenteavelEditar").checked;
+    const indice = npcs.indexOf(npc);
 
-    const presenteavel = document.querySelector("#presenteavel").checked;
-    const presentes = [
-      document.querySelector("#presentes1").value,
-      document.querySelector("#presentes2").value,
-    ];
-    const aniversario = document.querySelector("#aniversario").value;
-    const casavel = document.querySelector("#casavel").checked;
-    const presentesPossiveis = [
-      document.querySelector("#presentesPossiveis1").value,
-      document.querySelector("#presentesPossiveis2").value,
-    ];
-    npc.nome = nomeNovo;
+    if (!presenteavel) {
+      document.querySelector("#casavelEditar").checked = false;
+      console.log(presenteavel);
+    }
+    const casavel = document.querySelector("#casavelEditar").checked;
+    npc.nome = nome;
+    npc.endereco = endereco;
+
+    if (casavel) {
+      const presentes = [
+        document.querySelector("#presentes1Editar").value,
+        document.querySelector("#presentes2Editar").value,
+      ];
+      const aniversario = document.querySelector("#aniversarioEditar").value;
+      const presentesPossiveis = [
+        document.querySelector("#presentesPossiveis1Editar").value,
+        document.querySelector("#presentesPossiveis2Editar").value,
+      ];
+      npcs[indice] = new Casavel(
+        nome,
+        endereco,
+        aniversario,
+        presentes,
+        presentesPossiveis
+      );
+      // npc.melhoresPresentes = presentes;
+      // npc.aniversario = aniversario;
+      // npc.presentesPossiveis = presentesPossiveis;
+    } else if (presenteavel) {
+      const presentes = [
+        document.querySelector("#presentes1Editar").value,
+        document.querySelector("#presentes2Editar").value,
+      ];
+      const aniversario = document.querySelector("#aniversarioEditar").value;
+      // npc.melhoresPresentes = presentes;
+      // npc.aniversario = aniversario;
+      npcs[indice] = new Presenteavel(nome, endereco, aniversario, presentes);
+    } else {
+      delete npcs[indice].melhoresPresentes;
+      delete npcs[indice].presentesPossiveis;
+      delete npcs[indice].aniversario;
+      npcs[indice] = new Npc(nome, endereco);
+      console.log(npcs[indice]);
+    }
   }
   static apagarNpc(npc) {
     console.log(npcs);
