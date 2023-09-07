@@ -65,11 +65,12 @@ class ManipularDom {
   static init() {
     ManipularDom.controlaFormCasavel();
     ManipularDom.controlaFormPresenteavel();
-    const formularios = [...document.querySelectorAll(".formulario")];
+    // const formularios = [...document.querySelectorAll(".formulario")];
     const botaoAdicionar = document.querySelector("#adicionar");
     botaoAdicionar.addEventListener("click", () => {
       ListaNpc.adicionarNpc();
-      formularios.forEach((form) => form.reset());
+      ManipularDom.resetarFormulario();
+      // formularios.forEach((form) => form.reset());
       ManipularDom.atualizarLista();
     });
   }
@@ -228,6 +229,7 @@ class ManipularDom {
     });
   }
   static formularioEdicao(npcEditar) {
+    console.log("instancia: ", Npc.prototype.instancia(npcEditar));
     const divFooterModal = document.querySelector(".modal-footer-edicao");
     divFooterModal.innerHTML = "";
     document.querySelector(
@@ -273,6 +275,8 @@ class ManipularDom {
     salvarEdicao.textContent = "Save changes";
     salvarEdicao.addEventListener("click", () => {
       ListaNpc.editarNpc(npcEditar);
+      ManipularDom.resetarFormulario();
+
       console.log(npcs);
       ManipularDom.atualizarLista();
     });
@@ -287,6 +291,16 @@ class ManipularDom {
     });
     divFooterModal.appendChild(closeModal);
     divFooterModal.appendChild(salvarEdicao);
+  }
+  static resetarFormulario() {
+    const formularios = [...document.querySelectorAll(".formulario")];
+    formularios.forEach((form) => form.reset());
+    const formCasavel = document.querySelector("#formCasavel");
+    const radioCasavel = document.querySelector("#casavel");
+    // const formCasavelEditar = document.querySelector("#formCasavelEditar");
+    // const radioCasavelEditar = document.querySelector("#casavelEditar");
+    formCasavel.style.display = "none";
+    radioCasavel.style.display = "none";
   }
   static modalDelecao(npcApagar) {
     const divBotoes = document.querySelector(".modal-footer-delecao");
@@ -393,7 +407,7 @@ class ListaNpc {
       delete npcs[indice].presentesPossiveis;
       delete npcs[indice].aniversario;
       npcs[indice] = new Npc(nome, endereco);
-      console.log(npcs[indice]);
+      console.log(npcs[indice].melhoresPresentes);
     }
   }
   static apagarNpc(npc) {
@@ -413,6 +427,9 @@ Npc.prototype.instancia = function (o) {
   }
   if (o instanceof Presenteavel) {
     return "Presenteavel";
+  }
+  if (o instanceof Npc) {
+    return "Npc";
   }
 };
 console.log(
