@@ -131,12 +131,18 @@ class ManipularDom {
       buttonEditar.setAttribute("data-bs-target", "#exampleModal");
       buttonEditar.textContent = "Editar";
       buttonEditar.addEventListener("click", () => {
-        console.log(npcAtual);
         ManipularDom.formularioEdicao(npcAtual);
       });
-      const buttonDeletar = document.createElement("button");
-      buttonDeletar.textContent = "Deletar";
 
+      const buttonDeletar = document.createElement("button");
+      buttonDeletar.setAttribute("data-bs-toggle", "modal");
+      buttonDeletar.setAttribute("data-bs-target", "#confirmaDelecao");
+      buttonDeletar.textContent = "Deletar";
+      buttonDeletar.addEventListener("click", () => {
+        ManipularDom.modalDelecao(npcAtual);
+        // ListaNpc.apagarNpc(npcAtual);
+        // ManipularDom.atualizarLista();
+      });
       // Crie a estrutura do div NPC e aninhe os elementos criados
       divNpc.appendChild(nomeSpan);
       divNpc.appendChild(enderecoSpan);
@@ -214,36 +220,48 @@ class ManipularDom {
       formCasavelEditar.style.display = "none";
     });
   }
-
   static formularioEdicao(npcEditar) {
-    const divFooterModal = document.querySelector(".modal-footer");
+    const divFooterModal = document.querySelector(".modal-footer-edicao");
+    divFooterModal.innerHTML = "";
     document.querySelector(
-      ".modal-title"
+      ".modal-title-edicao"
     ).textContent = `Edite os dados de ${npcEditar.nome}`;
     document.querySelector("#nomeEditar").value = npcEditar.nome;
     document.querySelector("#enderecoEditar").value = npcEditar.endereco;
+    document.querySelector("#naoPresenteavelEditar").checked = true;
+
     if (Npc.prototype.instancia(npcEditar) === "Casavel") {
       document.querySelector("#formCasavelEditar").style.display = "block";
+      document.querySelector("#formPresenteavelEditar").style.display = "block";
       document.querySelector("#presenteavelEditar").checked = true;
+      document.querySelector("#casavelEditar").checked = true;
       // ManipularDom.controlaFormCasavel();
-      document.querySelector("#presentes1Editar").value;
-      document.querySelector("#presentes2Editar").value;
-      const aniversario = document.querySelector("#aniversarioEditar").value;
+      document.querySelector("#presentes1Editar").value =
+        npcEditar.melhoresPresentes[0];
+      document.querySelector("#presentes2Editar").value =
+        npcEditar.melhoresPresentes[1];
+      document.querySelector("#aniversarioEditar").value =
+        npcEditar.aniversario;
       document.querySelector("#casavel").checked = true;
-      const presentesPossiveis = [
-        document.querySelector("#presentesPossiveis1Editar").value,
-        document.querySelector("#presentesPossiveis2Editar").value,
-      ];
+      document.querySelector("#presentesPossiveis1Editar").value =
+        npcEditar.presentesPossiveis[0];
+      document.querySelector("#presentesPossiveis2Editar").value =
+        npcEditar.presentesPossiveis[1];
     } else if (Npc.prototype.instancia(npcEditar) === "Presenteavel") {
       document.querySelector("#formPresenteavelEditar").style.display = "block";
       document.querySelector("#presenteavelEditar").checked = true;
+      document.querySelector("#naoCasavelEditar").checked = true;
       // ManipularDom.controlaFormCasavel();
-      document.querySelector("#presentes1Editar").value;
-      document.querySelector("#presentes2Editar").value;
-      const aniversario = document.querySelector("#aniversarioEditar").value;
+      document.querySelector("#presentes1Editar").value =
+        npcEditar.melhoresPresentes[0];
+      document.querySelector("#presentes2Editar").value =
+        npcEditar.melhoresPresentes[1];
+      document.querySelector("#aniversarioEditar").value =
+        npcEditar.aniversario;
     }
     const salvarEdicao = document.createElement("button");
     salvarEdicao.setAttribute("type", "button");
+    salvarEdicao.setAttribute("data-bs-dismiss", "modal");
     salvarEdicao.classList.add("btn", "btn-primary");
     salvarEdicao.textContent = "Save changes";
     salvarEdicao.addEventListener("click", () => {
@@ -261,6 +279,24 @@ class ManipularDom {
     });
     divFooterModal.appendChild(closeModal);
     divFooterModal.appendChild(salvarEdicao);
+  }
+  static modalDelecao(npcApagar) {
+    const divBotoes = document.querySelector(".modal-footer-delecao");
+    divBotoes.innerHTML = "";
+    document.querySelector(
+      ".p-confirmar-delecao"
+    ).textContent = `Deseja mesmo deletar o NPC ${npcApagar.nome}?`;
+    const botaoConfirma = document.createElement("button");
+    botaoConfirma.classList.add("btn", "btn-danger");
+    botaoConfirma.setAttribute("data-bs-dismiss", "modal");
+    botaoConfirma.textContent = "Deletar";
+    botaoConfirma.addEventListener("click", () => {
+      ListaNpc.apagarNpc(npcApagar);
+      ManipularDom.atualizarLista();
+    });
+    divBotoes.appendChild(botaoConfirma);
+    // <button type="button" class="btn btn-primary">Save changes</button>
+    console.log("teste");
   }
 }
 
@@ -304,6 +340,7 @@ class ListaNpc {
   static editarNpc(npc) {
     const nomeNovo = document.querySelector("#nomeEditar").value;
     const endereco = document.querySelector("#endereco").value;
+
     const presenteavel = document.querySelector("#presenteavel").checked;
     const presentes = [
       document.querySelector("#presentes1").value,
@@ -317,7 +354,13 @@ class ListaNpc {
     ];
     npc.nome = nomeNovo;
   }
-  static apagarNpc() {}
+  static apagarNpc(npc) {
+    console.log(npcs);
+    npcs = npcs.filter((e) => {
+      return e !== npc;
+    });
+    console.log(npcs);
+  }
 }
 
 const teste = new Casavel();
@@ -338,6 +381,6 @@ console.log(
   "teste se casavel é presenteavel: ",
   Npc.prototype.instancia(teste2)
 );
-const npcs = [];
+let npcs = [];
 let qtdNpcs = 0;
 ManipularDom.init();
