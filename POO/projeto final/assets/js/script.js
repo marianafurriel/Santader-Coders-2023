@@ -82,17 +82,15 @@ class ManipularDom {
   static atualizarLista() {
     const divNpcs = document.querySelector(".npcs");
     divNpcs.innerHTML = "";
+
     npcs.forEach((npcAtual) => {
       //div de cada NPC
       npcAtual = Npc.prototype.toObject(npcAtual);
       // console.log("npc atual: ", npcAtual);
       const divNpc = document.createElement("div");
-      const divFlex = document.createElement("div");
-      const divEsquerda = document.createElement("div");
-      divEsquerda.classList.add("esquerda");
-      divFlex.classList.add("npc-flex");
-      divNpc.classList.add("npc");
-
+      divNpc.classList.add("npc-card");
+      const divContainer = document.createElement("div");
+      divContainer.classList.add("container-npc");
       // span do nome do npc
       const nomeSpan = document.createElement("span");
       nomeSpan.id = "nomeSpan";
@@ -104,7 +102,7 @@ class ManipularDom {
       enderecoSpan.id = "enderecoSpan";
       enderecoSpan.classList.add("spanDados", "enderecoSpan");
 
-      enderecoSpan.textContent = `${npcAtual.endereco}`;
+      enderecoSpan.textContent = `Endereço: ${npcAtual.endereco}`;
 
       //span aniversario
       const aniversarioSpan = document.createElement("span");
@@ -138,12 +136,12 @@ class ManipularDom {
       switch (Npc.prototype.instancia(npcAtual)) {
         case "Casavel":
           // console.log(npcAtual);
-          aniversarioSpan.textContent = npcAtual.aniversario;
-          casavelSpan.textContent = "Sim";
-          presente1Span.textContent = npcAtual.melhoresPresentes[0];
-          presente2Span.textContent = npcAtual.melhoresPresentes[1];
-          presentePossivel1Span.textContent = npcAtual.presentesPossiveis[0];
-          presentePossivel2Span.textContent = npcAtual.presentesPossiveis[1];
+          aniversarioSpan.textContent = `Aniversário: ${npcAtual.aniversario}`;
+          casavelSpan.textContent = "Casável";
+          presente1Span.textContent = `Melhor presente: ${npcAtual.melhoresPresentes[0]}`;
+          presente2Span.textContent = `Melhor presente: ${npcAtual.melhoresPresentes[1]}`;
+          presentePossivel1Span.textContent = `Presente possível: ${npcAtual.presentesPossiveis[0]}`;
+          presentePossivel2Span.textContent = `Presente possível: ${npcAtual.presentesPossiveis[1]}`;
           break;
         case "Presenteavel":
           // console.log(npcAtual);
@@ -152,7 +150,7 @@ class ManipularDom {
           presente2Span.textContent = npcAtual.melhoresPresentes[1];
           break;
         default:
-          casavelSpan.textContent = "Não";
+          casavelSpan.textContent = "Não casável";
         // console.log(npcAtual);
       }
 
@@ -177,27 +175,29 @@ class ManipularDom {
         // ListaNpc.apagarNpc(npcAtual);
         // ManipularDom.atualizarLista();
       });
+
       // Crie a estrutura do div NPC e aninhe os elementos criados
-      divNpc.appendChild(divFlex);
-      divFlex.appendChild(divEsquerda);
-      divEsquerda.appendChild(nomeSpan);
-      divEsquerda.appendChild(enderecoSpan);
-      divEsquerda.appendChild(aniversarioSpan);
-      divEsquerda.appendChild(presente1Span);
-      divEsquerda.appendChild(presente2Span);
-      divEsquerda.appendChild(presentePossivel1Span);
-      divEsquerda.appendChild(presentePossivel2Span);
+      divContainer.appendChild(nomeSpan);
+      divContainer.appendChild(enderecoSpan);
+      divContainer.appendChild(aniversarioSpan);
+      divContainer.appendChild(presente1Span);
+      divContainer.appendChild(presente2Span);
+      divContainer.appendChild(casavelSpan);
+      divContainer.appendChild(presentePossivel1Span);
+      divContainer.appendChild(presentePossivel2Span);
 
       const divBotoes = document.createElement("div");
       divBotoes.classList.add("botoes");
       divBotoes.appendChild(buttonEditar);
       divBotoes.appendChild(buttonDeletar);
 
-      divNpc.appendChild(divBotoes);
+      divContainer.appendChild(divBotoes);
 
+      divNpc.appendChild(divContainer);
+      divNpcs.appendChild(divNpc);
       // Agora você pode adicionar o divNpc ao seu documento onde desejar
 
-      divNpcs.appendChild(divNpc);
+      // divNpcs.appendChild(divNpc);
     });
   }
   static controlaFormPresenteavel() {
@@ -457,8 +457,18 @@ class ListaNpc {
     // );
   }
   static apagarNpc(npc) {
-    npc = Npc.prototype.toJson(npc);
-    npcs = npcs.filter((e) => JSON.stringify(e) !== JSON.stringify(npc));
+    // npc = Npc.prototype.toJson(npc);
+    // console.log(npcs.filter((e) => JSON.stringify(e) !== JSON.stringify(npc));)
+    console.log(npcs);
+    console.log(
+      npcs.filter((e) => {
+        return !Npc.prototype.equals(e, npc);
+      })
+    );
+    npcs = npcs.filter(
+      (e) => !Npc.prototype.equals(Npc.prototype.toObject(e), npc)
+    );
+    console.log(npcs);
     ListaNpc.atualizaLocalStorage();
   }
 }

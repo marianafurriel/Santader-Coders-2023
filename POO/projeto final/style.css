@@ -31,18 +31,17 @@ img {
 }
 
 header {
-  padding: 3rem;
+  padding: 2rem 0rem 1rem 0rem;
   background-color: #83bec6;
   font-family: "Stardew Valley Intro";
   text-align: center;
-  /* display: flex;
-  justify-content: space-evenly; */
 }
 
 header h1 {
-  font-size: 5rem;
+  font-size: 6rem;
 }
 main {
+  margin-top: 3rem;
   text-align: center;
 }
 .spanRadio {
@@ -103,34 +102,50 @@ input::placeholder {
 }
 
 .npcs {
+  margin-top: 3rem;
+  padding: 3rem;
   display: grid;
   grid-template-columns: 1fr;
+  row-gap: 2.5rem;
+  column-gap: 2.5rem;
 }
 
-.npc {
+.npc-card {
+  /* border: 3px solid blue; */
+  border-radius: 10px;
+  background-color: #4bb1be;
+  box-shadow: 5px 5px 5px 0px rgba(112, 101, 112, 1);
   margin: 0.5rem;
-  padding: 1rem;
+  padding: 1rem 0rem 1rem 2rem;
   border-radius: 1rem;
+}
+
+.container-npc {
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  text-align: start;
+  width: fit-content;
+  /* border: 3px solid blue; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
 }
 
 .nomeSpan {
-  font-size: 3rem;
+  font-size: 4rem;
   text-transform: capitalize;
 }
 
 .spanDados {
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
-.npc-flex {
-  display: flex;
-  justify-content: center;
-}
-.esquerda {
-  display: flex;
-  flex-direction: column;
+.botoes {
+  margin-top: 1.5rem;
+  text-align: center;
 }
 
 .botaoEditar,
@@ -184,20 +199,20 @@ input::placeholder {
   font-size: 4rem;
 }
 
-@media screen and (min-width: 380px) {
+/* @media screen and (min-width: 380px) {
+  .npcs {
+    grid-template-columns: 1fr 1fr;
+  }
+} */
+
+@media screen and (min-width: 800px) {
   .npcs {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media screen and (min-width: 576px) {
-  .npcs {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
 @media screen and (min-width: 992px) {
   .npcs {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
