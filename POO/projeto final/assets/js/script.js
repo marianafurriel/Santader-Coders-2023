@@ -85,6 +85,7 @@ class ManipularDom {
     npcs.forEach((npcAtual) => {
       //div de cada NPC
       npcAtual = Npc.prototype.toObject(npcAtual);
+      // console.log("npc atual: ", npcAtual);
       const divNpc = document.createElement("div");
       const divFlex = document.createElement("div");
       const divEsquerda = document.createElement("div");
@@ -136,6 +137,7 @@ class ManipularDom {
       //checando se é presenteavel ou casavel
       switch (Npc.prototype.instancia(npcAtual)) {
         case "Casavel":
+          // console.log(npcAtual);
           aniversarioSpan.textContent = npcAtual.aniversario;
           casavelSpan.textContent = "Sim";
           presente1Span.textContent = npcAtual.melhoresPresentes[0];
@@ -144,12 +146,14 @@ class ManipularDom {
           presentePossivel2Span.textContent = npcAtual.presentesPossiveis[1];
           break;
         case "Presenteavel":
+          // console.log(npcAtual);
           aniversarioSpan.textContent = npcAtual.aniversario;
           presente1Span.textContent = npcAtual.melhoresPresentes[0];
           presente2Span.textContent = npcAtual.melhoresPresentes[1];
           break;
         default:
           casavelSpan.textContent = "Não";
+        // console.log(npcAtual);
       }
 
       //cria botao de editar
@@ -295,6 +299,7 @@ class ManipularDom {
     salvarEdicao.textContent = "Save changes";
     salvarEdicao.addEventListener("click", () => {
       ListaNpc.editarNpc(npcEditar);
+      ListaNpc.atualizaLocalStorage();
       ManipularDom.resetarFormulario();
       ManipularDom.atualizarLista();
     });
@@ -390,12 +395,20 @@ class ListaNpc {
     const nome = document.querySelector("#nomeEditar").value;
     const endereco = document.querySelector("#enderecoEditar").value;
     const presenteavel = document.querySelector("#presenteavelEditar").checked;
-    const indice = npcs.indexOf(npc);
+    let indice = 0;
+    for (let i = 0; i < npcs.length; i++) {
+      if (Npc.prototype.equals(npcs[i], npc)) {
+        indice = i;
+        break;
+      }
+    }
+    // console.log(indice);
 
     if (!presenteavel) {
       document.querySelector("#casavelEditar").checked = false;
     }
     const casavel = document.querySelector("#casavelEditar").checked;
+    // console.log("casavel? ", casavel);
     npc.nome = nome;
     npc.endereco = endereco;
 
@@ -429,11 +442,19 @@ class ListaNpc {
       // npc.aniversario = aniversario;
       npcs[indice] = new Presenteavel(nome, endereco, aniversario, presentes);
     } else {
-      delete npcs[indice].melhoresPresentes;
-      delete npcs[indice].presentesPossiveis;
-      delete npcs[indice].aniversario;
+      // delete npcs[indice].melhoresPresentes;
+      // delete npcs[indice].presentesPossiveis;
+      // delete npcs[indice].aniversario;
+      // console.log(npcs[indice].aniversario);
       npcs[indice] = new Npc(nome, endereco);
+      // console.log("presetens : ", npcs[indice].presentesPossiveis);
     }
+    // console.log("instancia de npc? ", npcs[indice] instanceof Npc);
+    // console.log("instancia de casavel? ", npcs[indice] instanceof Casavel);
+    // console.log(
+    // "instancia de presenteavel? ",
+    // npcs[indice] instanceof Presenteavel
+    // );
   }
   static apagarNpc(npc) {
     npc = Npc.prototype.toJson(npc);
@@ -498,9 +519,36 @@ Npc.prototype.toObject = function (objetoLiteral) {
   }
 };
 
+Npc.prototype.equals = function (obj1, obj2) {
+  const instanciaObj1 = Npc.prototype.instancia(obj1);
+  console.log("inst obj1: ", instanciaObj1);
+  console.log("inst obj2: ", Npc.prototype.instancia(obj2));
+  if (instanciaObj1 !== Npc.prototype.instancia(obj2)) {
+    return false;
+  }
+  if (obj1.nome === obj2.nome && obj1.endereco === obj2.endereco) {
+    if (
+      instanciaObj1 === "Casavel" &&
+      JSON.stringify(obj1.presentesPossiveis) ===
+        JSON.stringify(obj2.presentesPossiveis)
+    ) {
+      return true;
+    } else if (
+      instanciaObj1 === "Presenteavel" &&
+      obj1.aniversario === obj2.aniversario &&
+      JSON.stringify(obj1.melhoresPresentes) ===
+        JSON.stringify(obj2.melhoresPresentes)
+    ) {
+      return true;
+    } else if (instanciaObj1 === "Npc") {
+      return true;
+    }
+  }
+  return false;
+};
+
 if (!localStorage.getItem("npcs")) {
   localStorage.setItem("npcs", JSON.stringify([]));
 }
 let npcs = JSON.parse(localStorage.getItem("npcs"));
-// let qtdNpcs = localStorage.getItem("qtdNpcs") || 0;
 ManipularDom.init();
