@@ -1,4 +1,3 @@
-// Npc.js
 class Npc {
   #nome;
   #endereco;
@@ -20,7 +19,6 @@ class Npc {
   }
 }
 
-// Presenteavel.js
 class Presenteavel extends Npc {
   #aniversario;
   #melhoresPresentes;
@@ -43,7 +41,6 @@ class Presenteavel extends Npc {
   }
 }
 
-// Casavel.js
 class Casavel extends Presenteavel {
   #presentesPossiveis;
   constructor(
@@ -64,18 +61,15 @@ class Casavel extends Presenteavel {
   }
 }
 
-// ManipularDom.js
 class ManipularDom {
   static init() {
     ManipularDom.atualizarLista();
     ManipularDom.controlaFormCasavel();
     ManipularDom.controlaFormPresenteavel();
-    // const formularios = [...document.querySelectorAll(".formulario")];
     const botaoAdicionar = document.querySelector("#adicionar");
     botaoAdicionar.addEventListener("click", () => {
       ListaNpc.adicionarNpc();
       ManipularDom.resetarFormulario();
-      // formularios.forEach((form) => form.reset());
       ManipularDom.atualizarLista();
     });
   }
@@ -86,30 +80,27 @@ class ManipularDom {
     npcs.forEach((npcAtual) => {
       //div de cada NPC
       npcAtual = Npc.prototype.toObject(npcAtual);
-      // console.log("npc atual: ", npcAtual);
+
       const divNpc = document.createElement("div");
       divNpc.classList.add("npc-card");
+
       const divContainer = document.createElement("div");
       divContainer.classList.add("container-npc");
-      // span do nome do npc
+
       const nomeSpan = document.createElement("span");
       nomeSpan.id = "nomeSpan";
       nomeSpan.classList.add("nomeSpan");
       nomeSpan.textContent = `${npcAtual.nome}`;
 
-      //span endereço
       const enderecoSpan = document.createElement("span");
       enderecoSpan.id = "enderecoSpan";
       enderecoSpan.classList.add("spanDados", "enderecoSpan");
-
       enderecoSpan.textContent = `Endereço: ${npcAtual.endereco}`;
 
-      //span aniversario
       const aniversarioSpan = document.createElement("span");
       aniversarioSpan.id = "aniversarioSpan";
       aniversarioSpan.classList.add("spanDados", "aniversarioSpan");
 
-      //spans presentes
       const presente1Span = document.createElement("span");
       presente1Span.id = "presente1Span";
       presente1Span.classList.add("spanDados", "presente1Span");
@@ -118,12 +109,10 @@ class ManipularDom {
       presente2Span.id = "presente2Span";
       presente2Span.classList.add("spanDados", "presente2Span");
 
-      //span casavel
       const casavelSpan = document.createElement("span");
       casavelSpan.id = "casavelSpan";
       casavelSpan.classList.add("spanDados", "casavelSpan");
 
-      //span presentes possiveis
       const presentePossivel1Span = document.createElement("span");
       presentePossivel1Span.id = "presentePossivel1Span";
       presentePossivel1Span.classList.add("spanDados", "presentePossivel1Span");
@@ -132,10 +121,8 @@ class ManipularDom {
       presentePossivel2Span.id = "presentePossivel2Span";
       presentePossivel2Span.classList.add("spanDados", "presentePossivel2Span");
 
-      //checando se é presenteavel ou casavel
       switch (Npc.prototype.instancia(npcAtual)) {
         case "Casavel":
-          // console.log(npcAtual);
           aniversarioSpan.textContent = `Aniversário: ${npcAtual.aniversario}`;
           casavelSpan.textContent = "Casável";
           presente1Span.textContent = `Melhor presente: ${npcAtual.melhoresPresentes[0]}`;
@@ -144,17 +131,14 @@ class ManipularDom {
           presentePossivel2Span.textContent = `Presente possível: ${npcAtual.presentesPossiveis[1]}`;
           break;
         case "Presenteavel":
-          // console.log(npcAtual);
           aniversarioSpan.textContent = npcAtual.aniversario;
           presente1Span.textContent = npcAtual.melhoresPresentes[0];
           presente2Span.textContent = npcAtual.melhoresPresentes[1];
           break;
         default:
           casavelSpan.textContent = "Não casável";
-        // console.log(npcAtual);
       }
 
-      //cria botao de editar
       const buttonEditar = document.createElement("button");
       buttonEditar.type = "button";
       buttonEditar.classList.add("botaoEditar", "botao");
@@ -172,11 +156,8 @@ class ManipularDom {
       buttonDeletar.textContent = "Deletar";
       buttonDeletar.addEventListener("click", () => {
         ManipularDom.modalDelecao(npcAtual);
-        // ListaNpc.apagarNpc(npcAtual);
-        // ManipularDom.atualizarLista();
       });
 
-      // Crie a estrutura do div NPC e aninhe os elementos criados
       divContainer.appendChild(nomeSpan);
       divContainer.appendChild(enderecoSpan);
       divContainer.appendChild(aniversarioSpan);
@@ -195,9 +176,6 @@ class ManipularDom {
 
       divNpc.appendChild(divContainer);
       divNpcs.appendChild(divNpc);
-      // Agora você pode adicionar o divNpc ao seu documento onde desejar
-
-      // divNpcs.appendChild(divNpc);
     });
   }
   static controlaFormPresenteavel() {
@@ -284,7 +262,6 @@ class ManipularDom {
       document.querySelector("#formPresenteavelEditar").style.display = "block";
       document.querySelector("#presenteavelEditar").checked = true;
       document.querySelector("#naoCasavelEditar").checked = true;
-      // ManipularDom.controlaFormCasavel();
       document.querySelector("#presentes1Editar").value =
         npcEditar.melhoresPresentes[0];
       document.querySelector("#presentes2Editar").value =
@@ -309,9 +286,6 @@ class ManipularDom {
     closeModal.setAttribute("data-bs-dismiss", "modal");
     closeModal.classList.add("botaoCancelar", "botao");
     closeModal.textContent = "Cancelar";
-    // closeModal.addEventListener("click", () => {
-    //   divFooterModal.innerHTML = "";
-    // });
     divFooterModal.appendChild(closeModal);
     divFooterModal.appendChild(salvarEdicao);
   }
@@ -335,7 +309,6 @@ class ManipularDom {
     botaoConfirma.textContent = "Deletar";
     botaoConfirma.addEventListener("click", () => {
       ListaNpc.apagarNpc(npcApagar);
-      // qtdNpcs--;
       ManipularDom.atualizarLista();
     });
     const botaoCancelar = document.createElement("button");
@@ -348,17 +321,14 @@ class ManipularDom {
   }
 }
 
-// ListaNpc.js
 class ListaNpc {
   static atualizaLocalStorage() {
     localStorage.setItem("npcs", JSON.stringify(npcs));
-    // localStorage.setItem("qtdNpcs", qtdNpcs);
   }
   static adicionarNpc() {
     const npc = Npc.prototype.toJson(ListaNpc.gerarNpc());
     npcs.push(npc);
     ListaNpc.atualizaLocalStorage();
-    // qtdNpcs++;
   }
   static gerarNpc() {
     const nome = document.querySelector("#nome").value;
@@ -402,13 +372,11 @@ class ListaNpc {
         break;
       }
     }
-    // console.log(indice);
 
     if (!presenteavel) {
       document.querySelector("#casavelEditar").checked = false;
     }
     const casavel = document.querySelector("#casavelEditar").checked;
-    // console.log("casavel? ", casavel);
     npc.nome = nome;
     npc.endereco = endereco;
 
@@ -429,46 +397,21 @@ class ListaNpc {
         presentes,
         presentesPossiveis
       );
-      // npc.melhoresPresentes = presentes;
-      // npc.aniversario = aniversario;
-      // npc.presentesPossiveis = presentesPossiveis;
     } else if (presenteavel) {
       const presentes = [
         document.querySelector("#presentes1Editar").value,
         document.querySelector("#presentes2Editar").value,
       ];
       const aniversario = document.querySelector("#aniversarioEditar").value;
-      // npc.melhoresPresentes = presentes;
-      // npc.aniversario = aniversario;
       npcs[indice] = new Presenteavel(nome, endereco, aniversario, presentes);
     } else {
-      // delete npcs[indice].melhoresPresentes;
-      // delete npcs[indice].presentesPossiveis;
-      // delete npcs[indice].aniversario;
-      // console.log(npcs[indice].aniversario);
       npcs[indice] = new Npc(nome, endereco);
-      // console.log("presetens : ", npcs[indice].presentesPossiveis);
     }
-    // console.log("instancia de npc? ", npcs[indice] instanceof Npc);
-    // console.log("instancia de casavel? ", npcs[indice] instanceof Casavel);
-    // console.log(
-    // "instancia de presenteavel? ",
-    // npcs[indice] instanceof Presenteavel
-    // );
   }
   static apagarNpc(npc) {
-    // npc = Npc.prototype.toJson(npc);
-    // console.log(npcs.filter((e) => JSON.stringify(e) !== JSON.stringify(npc));)
-    console.log(npcs);
-    console.log(
-      npcs.filter((e) => {
-        return !Npc.prototype.equals(e, npc);
-      })
-    );
     npcs = npcs.filter(
       (e) => !Npc.prototype.equals(Npc.prototype.toObject(e), npc)
     );
-    console.log(npcs);
     ListaNpc.atualizaLocalStorage();
   }
 }
