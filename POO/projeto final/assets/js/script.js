@@ -176,9 +176,6 @@ class ManipularDom {
       // Agora você pode adicionar o divNpc ao seu documento onde desejar
 
       divNpcs.appendChild(divNpc);
-      // divNpcs.innerHTML += novoNpc;
-      // const botaoEditar = document.querySelector(`#npc${qtdNpcs - 1}`);
-      // botaoEditar.addEventListener("click", () => {});
     });
   }
   static controlaFormPresenteavel() {
@@ -317,6 +314,7 @@ class ManipularDom {
     botaoConfirma.textContent = "Deletar";
     botaoConfirma.addEventListener("click", () => {
       ListaNpc.apagarNpc(npcApagar);
+      qtdNpcs--;
       ManipularDom.atualizarLista();
     });
     divBotoes.appendChild(botaoConfirma);
