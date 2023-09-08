@@ -1,11 +1,98 @@
 * {
   margin: 0;
-  padding: 10px;
-  border: 1px solid red;
+  padding: 0px;
+  /* border: 1px solid red; */
 }
 
-span {
-  padding: 0;
+@font-face {
+  font-family: "Stardew Valley Dialogue";
+  src: url("./assets/fonts/Stardew_Valley.otf") format("opentype"),
+    url(./assets/fonts/Stardew_Valley.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Stardew Valley Intro";
+  src: url("./assets/fonts/Stardew\ Valley\ ALL\ CAPS.ttf") format("truetype");
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: rgba(110, 159, 189, 0.8);
+  color: black;
+  /* padding: 3rem; */
+  font-family: "Stardew Valley Dialogue";
+}
+
+img {
+  width: 5rem;
+  height: 5rem;
+}
+
+header {
+  padding: 3rem;
+  background-color: #83bec6;
+  font-family: "Stardew Valley Intro";
+  text-align: center;
+  /* display: flex;
+  justify-content: space-evenly; */
+}
+
+header h1 {
+  font-size: 5rem;
+}
+main {
+  text-align: center;
+}
+.spanRadio {
+  letter-spacing: 2px;
+  display: block;
+  width: fit-content;
+  margin: 2rem auto 0;
+  background-color: rgba(131, 190, 198, 1);
+  padding: 0.8rem;
+  font-size: 2rem;
+  border-radius: 1rem;
+}
+
+label {
+  letter-spacing: 2px;
+  font-size: 2rem;
+}
+
+form input {
+  border: none;
+  background-color: #273b6c;
+  color: white;
+  padding: 0.8rem;
+  font-size: 2rem;
+  margin: 0.7rem;
+  border-radius: 1rem;
+}
+
+input::placeholder {
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.685);
+}
+
+.botao {
+  padding: 0.8rem;
+  margin: 0.7rem;
+  border-radius: 1rem;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  transition: letter-spacing 0.2s ease;
+}
+
+.botao:hover {
+  transition: letter-spacing 0.2s ease;
+  letter-spacing: 3px;
+}
+
+#adicionar {
+  background-color: #273b6c;
+  color: white;
 }
 
 #formCasavel,
@@ -26,6 +113,75 @@ span {
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
+}
+
+.nomeSpan {
+  font-size: 3rem;
+  text-transform: capitalize;
+}
+
+.spanDados {
+  font-size: 2rem;
+}
+
+.npc-flex {
+  display: flex;
+  justify-content: center;
+}
+.esquerda {
+  display: flex;
+  flex-direction: column;
+}
+
+.botaoEditar,
+.botaoDeletar {
+  color: black;
+}
+.botaoDeletar {
+  background-color: #9cc6baa5;
+}
+
+.botaoEditar {
+  background-color: #4567a1d2;
+}
+.botaoCancelar {
+  background-color: #4567a187;
+}
+
+.modal-edicao,
+.modal-body {
+  background-color: rgba(110, 159, 189, 0.8);
+  color: black;
+  /* padding: 3rem; */
+  font-family: "Stardew Valley Dialogue";
+}
+
+.modal-header,
+.modal-footer {
+  background-color: #83bec6;
+}
+.modal-header {
+  border-top-right-radius: 2.5rem;
+  border-top-left-radius: 2.5rem;
+  padding-left: 3rem;
+  padding-right: 2rem;
+  font-size: 1.5rem;
+}
+
+.modal-title {
+  font-size: 2.5rem;
+}
+.modal-footer {
+  border-bottom-right-radius: 2.5rem;
+  border-bottom-left-radius: 2.5rem;
+  padding-right: 1.5rem;
+}
+.modal-content {
+  border-radius: 2.5rem;
+}
+
+.p-confirmar-delecao {
+  font-size: 4rem;
 }
 
 @media screen and (min-width: 380px) {

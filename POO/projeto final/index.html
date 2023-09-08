@@ -4,57 +4,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
 
 <body>
   <header>
-    <img src="assets/imgs/icone1.png" alt="" class="icone">
+    <!-- <img src="assets/imgs/icone1.png" alt="" class="icone"> -->
     <h1>Stardew Valley NPCs</h1>
-    <img src="assets/imgs/icone2.png" alt="" class="icone">
+    <!-- <img src="assets/imgs/icone2.png" alt="" class="icone"> -->
   </header>
   <main>
     <section>
       <form action="" class="formulario">
-        <label for="nome">Nome</label>
-        <input type="text" id="nome"><br>
+        <!-- <label for="nome">Nome</label> -->
+        <input type="text" id="nome" placeholder="Nome"><br>
 
-        <label for="endereco">Endereco</label>
-        <input type="text" id="endereco"><br>
+        <!-- <label for="endereco">Endereco</label> -->
+        <input type="text" id="endereco" placeholder="Endereço"><br>
 
         <!-- <label for="trabalho">Trabalho</label>
         <input type="text" name="trabalho" id="\trabalho"><br> -->
 
-        <span>Presenteavel?</span>
+        <span class="spanRadio">Presenteavel?</span>
         <input type="radio" id="naoPresenteavel" name="presenteavel" value="0">
         <label for="naoPresenteavel">Não</label>
         <input type="radio" id="presenteavel" name="presenteavel" value="1">
         <label for="presenteavel">Sim</label>
       </form>
       <form action="" id="formPresenteavel" class="formulario">
-        <label for="aniversario">Aniversario</label>
-        <input type="text" id="aniversario"><br>
-        <label for="presentes1">Melhores presentes</label>
-        <input type="text" id="presentes1">
-        <input type="text" id="presentes2"><br>
-        <span>Casavel?</span>
+        <!-- <label for="aniversario">Aniversario</label> -->
+        <input type="text" id="aniversario" placeholder="Aniversario"><br>
+        <!-- <label for="presentes1">Melhores presentes</label> -->
+        <input type="text" id="presentes1" placeholder="Melhores presentes">
+        <input type="text" id="presentes2" placeholder="Melhores presentes"><br>
+        <span class="spanRadio">Casavel?</span>
         <input type="radio" id="naoCasavel" name="casavel" value="0">
         <label for="naoCasavel">Não</label>
         <input type="radio" id="casavel" name="casavel" value="1">
         <label for="casavel">Sim</label>
       </form>
       <form action="" id="formCasavel" class="formulario">
-        <label for="presentesPossiveis1">Presentes possiveis</label>
-        <input type="text" id="presentesPossiveis1">
-        <input type="text" id="presentesPossiveis2">
+        <!-- <label for="presentesPossiveis1">Presentes possiveis</label> -->
+        <input type="text" id="presentesPossiveis1" placeholder="Presentes possiveis">
+        <input type="text" id="presentesPossiveis2" placeholder="Presentes possiveis">
       </form>
-      <button id="adicionar">Adicionar NPC</button>
+      <button id="adicionar" class="botao">Adicionar NPC</button>
     </section>
     <section>
-      <div class="npcs">
+      <div class=" npcs">
         <div class="npc">
           <span id="nomeSpan">NOME</span>
           <span id="aniversarioSpan">13 do outono</span>
@@ -72,41 +72,42 @@
       </div>
     </section>
     <!--Modal de edição-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade modal-edicao" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5 modal-title-edicao" id="exampleModalLabel">Modal title</h1>
+            <h1 class="modal-title modal-title-edicao" id="exampleModalLabel">Modal title</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form action="" class="formulario">
-              <label for="nomeEditar">Nome</label>
+              <!-- <label for="nomeEditar">Nome</label> -->
               <input type="text" id="nomeEditar"><br>
 
-              <label for="enderecoEditar">Endereco</label>
+              <!-- <label for="enderecoEditar">Endereco</label> -->
               <input type="text" id="enderecoEditar"><br>
 
-              <span>Presenteavel?</span>
+              <span class="spanRadio">Presenteavel?</span>
               <input type="radio" id="naoPresenteavelEditar" name="presenteavelEditar" value="0">
               <label for="naoPresenteavelEditar">Não</label>
               <input type="radio" id="presenteavelEditar" name="presenteavelEditar" value="1">
               <label for="presenteavelEditar">Sim</label>
             </form>
             <form action="" id="formPresenteavelEditar" class="formulario">
-              <label for="aniversarioEditar">Aniversario</label>
+              <!-- <label for="aniversarioEditar">Aniversario</label> -->
               <input type="text" id="aniversarioEditar"><br>
-              <label for="presentes1Editar">Melhores presentes</label>
+              <!-- <label for="presentes1Editar">Melhores presentes</label> -->
               <input type="text" id="presentes1Editar">
               <input type="text" id="presentes2Editar"><br>
-              <span>Casavel?</span>
+              <span class="spanRadio">Casavel?</span>
               <input type="radio" id="naoCasavelEditar" name="casavelEditar" value="0">
               <label for="naoCasavelEditar">Não</label>
               <input type="radio" id="casavelEditar" name="casavelEditar" value="1">
               <label for="casavelEditar">Sim</label>
             </form>
             <form action="" id="formCasavelEditar" class="formulario">
-              <label for="presentesPossiveis1Editar">Presentes possiveis</label>
+              <!-- <label for="presentesPossiveis1Editar">Presentes possiveis</label> -->
               <input type="text" id="presentesPossiveis1Editar">
               <input type="text" id="presentesPossiveis2Editar">
             </form>
@@ -122,7 +123,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
+            <h5 class="modal-title">Confirmar deleção de NPC.</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">

@@ -86,37 +86,52 @@ class ManipularDom {
       //div de cada NPC
       npcAtual = Npc.prototype.toObject(npcAtual);
       const divNpc = document.createElement("div");
+      const divFlex = document.createElement("div");
+      const divEsquerda = document.createElement("div");
+      divEsquerda.classList.add("esquerda");
+      divFlex.classList.add("npc-flex");
       divNpc.classList.add("npc");
 
       // span do nome do npc
       const nomeSpan = document.createElement("span");
       nomeSpan.id = "nomeSpan";
-      nomeSpan.textContent = `Nome:${npcAtual.nome}`;
+      nomeSpan.classList.add("nomeSpan");
+      nomeSpan.textContent = `${npcAtual.nome}`;
 
       //span endereço
       const enderecoSpan = document.createElement("span");
       enderecoSpan.id = "enderecoSpan";
-      enderecoSpan.textContent = `Endereço: ${npcAtual.endereco}`;
+      enderecoSpan.classList.add("spanDados", "enderecoSpan");
+
+      enderecoSpan.textContent = `${npcAtual.endereco}`;
 
       //span aniversario
       const aniversarioSpan = document.createElement("span");
       aniversarioSpan.id = "aniversarioSpan";
+      aniversarioSpan.classList.add("spanDados", "aniversarioSpan");
 
       //spans presentes
       const presente1Span = document.createElement("span");
       presente1Span.id = "presente1Span";
+      presente1Span.classList.add("spanDados", "presente1Span");
+
       const presente2Span = document.createElement("span");
       presente2Span.id = "presente2Span";
+      presente2Span.classList.add("spanDados", "presente2Span");
 
       //span casavel
       const casavelSpan = document.createElement("span");
       casavelSpan.id = "casavelSpan";
+      casavelSpan.classList.add("spanDados", "casavelSpan");
 
       //span presentes possiveis
       const presentePossivel1Span = document.createElement("span");
       presentePossivel1Span.id = "presentePossivel1Span";
+      presentePossivel1Span.classList.add("spanDados", "presentePossivel1Span");
+
       const presentePossivel2Span = document.createElement("span");
       presentePossivel2Span.id = "presentePossivel2Span";
+      presentePossivel2Span.classList.add("spanDados", "presentePossivel2Span");
 
       //checando se é presenteavel ou casavel
       switch (Npc.prototype.instancia(npcAtual)) {
@@ -140,7 +155,7 @@ class ManipularDom {
       //cria botao de editar
       const buttonEditar = document.createElement("button");
       buttonEditar.type = "button";
-      buttonEditar.classList.add("btn", "btn-primary", "botaoEdicao");
+      buttonEditar.classList.add("botaoEditar", "botao");
       buttonEditar.setAttribute("data-bs-toggle", "modal");
       buttonEditar.setAttribute("data-bs-target", "#exampleModal");
       buttonEditar.textContent = "Editar";
@@ -149,6 +164,7 @@ class ManipularDom {
       });
 
       const buttonDeletar = document.createElement("button");
+      buttonDeletar.classList.add("botaoDeletar", "botao");
       buttonDeletar.setAttribute("data-bs-toggle", "modal");
       buttonDeletar.setAttribute("data-bs-target", "#confirmaDelecao");
       buttonDeletar.textContent = "Deletar";
@@ -158,13 +174,15 @@ class ManipularDom {
         // ManipularDom.atualizarLista();
       });
       // Crie a estrutura do div NPC e aninhe os elementos criados
-      divNpc.appendChild(nomeSpan);
-      divNpc.appendChild(enderecoSpan);
-      divNpc.appendChild(aniversarioSpan);
-      divNpc.appendChild(presente1Span);
-      divNpc.appendChild(presente2Span);
-      divNpc.appendChild(presentePossivel1Span);
-      divNpc.appendChild(presentePossivel2Span);
+      divNpc.appendChild(divFlex);
+      divFlex.appendChild(divEsquerda);
+      divEsquerda.appendChild(nomeSpan);
+      divEsquerda.appendChild(enderecoSpan);
+      divEsquerda.appendChild(aniversarioSpan);
+      divEsquerda.appendChild(presente1Span);
+      divEsquerda.appendChild(presente2Span);
+      divEsquerda.appendChild(presentePossivel1Span);
+      divEsquerda.appendChild(presentePossivel2Span);
 
       const divBotoes = document.createElement("div");
       divBotoes.classList.add("botoes");
@@ -273,7 +291,7 @@ class ManipularDom {
     const salvarEdicao = document.createElement("button");
     salvarEdicao.setAttribute("type", "button");
     salvarEdicao.setAttribute("data-bs-dismiss", "modal");
-    salvarEdicao.classList.add("btn", "btn-primary");
+    salvarEdicao.classList.add("botaoEditar", "botao");
     salvarEdicao.textContent = "Save changes";
     salvarEdicao.addEventListener("click", () => {
       ListaNpc.editarNpc(npcEditar);
@@ -284,11 +302,11 @@ class ManipularDom {
     const closeModal = document.createElement("button");
     closeModal.setAttribute("type", "button");
     closeModal.setAttribute("data-bs-dismiss", "modal");
-    closeModal.classList.add("btn", "btn-secondary");
-    closeModal.textContent = "Close";
-    closeModal.addEventListener("click", () => {
-      divFooterModal.innerHTML = "";
-    });
+    closeModal.classList.add("botaoCancelar", "botao");
+    closeModal.textContent = "Cancelar";
+    // closeModal.addEventListener("click", () => {
+    //   divFooterModal.innerHTML = "";
+    // });
     divFooterModal.appendChild(closeModal);
     divFooterModal.appendChild(salvarEdicao);
   }
@@ -296,11 +314,9 @@ class ManipularDom {
     const formularios = [...document.querySelectorAll(".formulario")];
     formularios.forEach((form) => form.reset());
     const formCasavel = document.querySelector("#formCasavel");
-    const radioCasavel = document.querySelector("#casavel");
-    // const formCasavelEditar = document.querySelector("#formCasavelEditar");
-    // const radioCasavelEditar = document.querySelector("#casavelEditar");
+    const formPresenteavel = document.querySelector("#formPresenteavel");
     formCasavel.style.display = "none";
-    radioCasavel.style.display = "none";
+    formPresenteavel.style.display = "none";
   }
   static modalDelecao(npcApagar) {
     const divBotoes = document.querySelector(".modal-footer-delecao");
@@ -309,14 +325,20 @@ class ManipularDom {
       ".p-confirmar-delecao"
     ).textContent = `Deseja mesmo deletar o NPC ${npcApagar.nome}?`;
     const botaoConfirma = document.createElement("button");
-    botaoConfirma.classList.add("btn", "btn-danger");
+    botaoConfirma.classList.add("btn", "btn-danger", "botao");
     botaoConfirma.setAttribute("data-bs-dismiss", "modal");
     botaoConfirma.textContent = "Deletar";
     botaoConfirma.addEventListener("click", () => {
       ListaNpc.apagarNpc(npcApagar);
-      qtdNpcs--;
+      // qtdNpcs--;
       ManipularDom.atualizarLista();
     });
+    const botaoCancelar = document.createElement("button");
+    botaoCancelar.setAttribute("type", "button");
+    botaoCancelar.setAttribute("data-bs-dismiss", "modal");
+    botaoCancelar.classList.add("botaoCancelar", "botao");
+    botaoCancelar.textContent = "Cancelar";
+    divBotoes.appendChild(botaoCancelar);
     divBotoes.appendChild(botaoConfirma);
   }
 }
@@ -325,13 +347,13 @@ class ManipularDom {
 class ListaNpc {
   static atualizaLocalStorage() {
     localStorage.setItem("npcs", JSON.stringify(npcs));
-    localStorage.setItem("qtdNpcs", qtdNpcs);
+    // localStorage.setItem("qtdNpcs", qtdNpcs);
   }
   static adicionarNpc() {
     const npc = Npc.prototype.toJson(ListaNpc.gerarNpc());
     npcs.push(npc);
     ListaNpc.atualizaLocalStorage();
-    qtdNpcs++;
+    // qtdNpcs++;
   }
   static gerarNpc() {
     const nome = document.querySelector("#nome").value;
@@ -480,5 +502,5 @@ if (!localStorage.getItem("npcs")) {
   localStorage.setItem("npcs", JSON.stringify([]));
 }
 let npcs = JSON.parse(localStorage.getItem("npcs"));
-let qtdNpcs = localStorage.getItem("qtdNpcs") || 0;
+// let qtdNpcs = localStorage.getItem("qtdNpcs") || 0;
 ManipularDom.init();
