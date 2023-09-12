@@ -5,6 +5,9 @@ class Npc {
     this.#nome = nome;
     this.#endereco = endereco;
   }
+  descricao() {
+    console.log(`Me chamo ${this.nome} e moro em ${this.endereco}`);
+  }
   get nome() {
     return this.#nome;
   }
@@ -26,6 +29,11 @@ class Presenteavel extends Npc {
     super(nome, endereco);
     this.#aniversario = aniversario;
     this.#melhoresPresentes = melhoresPresentes;
+  }
+  descricao() {
+    console.log(
+      `Me chamo ${this.nome} e moro em ${this.endereco}, meus presentes favoritos são ${this.melhoresPresentes}`
+    );
   }
   get aniversario() {
     return this.#aniversario;
@@ -53,6 +61,11 @@ class Casavel extends Presenteavel {
     super(nome, endereco, aniversario, melhoresPresentes);
     this.#presentesPossiveis = presentesPossiveis;
   }
+  descricao() {
+    console.log(
+      `Me chamo ${this.nome} e moro em ${this.endereco}, meus presentes favoritos são ${this.melhoresPresentes}. Depois que casarmos posso te dar ${this.presentesPossiveis}`
+    );
+  }
   get presentesPossiveis() {
     return this.#presentesPossiveis;
   }
@@ -62,6 +75,7 @@ class Casavel extends Presenteavel {
 }
 
 class ManipularDom {
+  //inicializa as manipulações do DOM
   static init() {
     ManipularDom.atualizarLista();
     ManipularDom.controlaFormCasavel();
@@ -73,13 +87,14 @@ class ManipularDom {
       ManipularDom.atualizarLista();
     });
   }
+  //atualiza a lista no DOM
   static atualizarLista() {
     const divNpcs = document.querySelector(".npcs");
     divNpcs.innerHTML = "";
 
     npcs.forEach((npcAtual) => {
       //div de cada NPC
-      npcAtual = Npc.prototype.toObject(npcAtual);
+      npcAtual = Npc.prototype.toObject(npcAtual); //converte de volta para objeto
 
       const divNpc = document.createElement("div");
       divNpc.classList.add("npc-card");
@@ -352,12 +367,17 @@ class ListaNpc {
         presentes,
         presentesPossiveis
       );
+      npc.descricao();
       return npc;
     } else if (presenteavel) {
       const npc = new Presenteavel(nome, endereco, aniversario, presentes);
+      npc.descricao();
+
       return npc;
     } else {
       const npc = new Npc(nome, endereco);
+      npc.descricao();
+
       return npc;
     }
   }
