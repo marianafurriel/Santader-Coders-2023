@@ -78,6 +78,13 @@ function resolver() {
       primeiro_num = parseFloat(numeroAtual.textContent);
       break;
   }
+  if (numeroAtual.textContent > 20) {
+    numeroAtual.classList.remove("background-laranja");
+    numeroAtual.classList.add("background-verde");
+  } else {
+    numeroAtual.classList.remove("background-verde");
+    numeroAtual.classList.add("background-laranja");
+  }
 }
 
 function resetar() {

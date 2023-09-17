@@ -86,3 +86,12 @@ button {
   width: 16.5rem;
   font-size: 3rem;
 }
+
+.background-verde {
+  background-color: rgb(5, 90, 5);
+  color: black;
+}
+
+.background-laranja {
+  background-color: #d5854c;
+}
