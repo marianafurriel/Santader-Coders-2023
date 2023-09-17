@@ -81,6 +81,8 @@ button {
   box-shadow: 2px 2px 0px 2px var(--sombra-igual);
 }
 
-.resetar {
-  width: 100%;
+.resetar,
+.backspace {
+  width: 16.5rem;
+  font-size: 3rem;
 }

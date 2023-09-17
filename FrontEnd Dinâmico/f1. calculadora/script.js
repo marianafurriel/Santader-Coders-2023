@@ -1,7 +1,10 @@
-const numeros = document.querySelectorAll(".number");
-const operadores = document.querySelectorAll(".operator");
 const numeroAtual = document.querySelector(".visor");
 const limpar = document.querySelector(".resetar");
+limpar.addEventListener("click", resetar);
+
+const backspace = document.querySelector(".backspace");
+backspace.addEventListener("click", apagar);
+
 let operacao = "";
 let ultimoCaracterEhOperador = false;
 let primeiro_num;
@@ -11,18 +14,21 @@ igual.addEventListener("click", () => {
   resolver();
 });
 
+const numeros = document.querySelectorAll(".number");
 numeros.forEach((num) =>
   num.addEventListener("click", () => {
     adicionarNumero(num.textContent);
   })
 );
 
+const operadores = document.querySelectorAll(".operator");
 operadores.forEach((operador) =>
   operador.addEventListener("click", () => {
-    if (!operacao) {
+    if (!ultimoCaracterEhOperador) {
       operacao = operador.textContent;
       ultimoCaracterEhOperador = true;
       primeiro_num = parseFloat(numeroAtual.textContent);
+      console.log(primeiro_num);
     }
   })
 );
@@ -52,24 +58,42 @@ function resolver() {
     case "-":
       numeroAtual.textContent =
         primeiro_num - parseFloat(numeroAtual.textContent);
-      primeiro_num = "";
+      primeiro_num = parseFloat(numeroAtual.textContent);
       break;
     case "+":
       numeroAtual.textContent =
         primeiro_num + parseFloat(numeroAtual.textContent);
-      primeiro_num = "";
+      primeiro_num = parseFloat(numeroAtual.textContent);
       break;
     case "/":
       if (numeroAtual.textContent !== "0") {
         numeroAtual.textContent =
           primeiro_num / parseFloat(numeroAtual.textContent);
-        primeiro_num = "";
+        primeiro_num = parseFloat(numeroAtual.textContent);
       }
       break;
-    case "*":
+    case "x":
       numeroAtual.textContent =
         primeiro_num * parseFloat(numeroAtual.textContent);
-      primeiro_num = "";
+      primeiro_num = parseFloat(numeroAtual.textContent);
       break;
+  }
+}
+
+function resetar() {
+  numeroAtual.textContent = 0;
+  operacao = "";
+  primeiro_num = "";
+  ultimoCaracterEhOperador = false;
+}
+
+function apagar() {
+  if (numeroAtual.textContent.length == 1) {
+    numeroAtual.textContent = 0;
+  } else {
+    numeroAtual.textContent = numeroAtual.textContent.substring(
+      0,
+      numeroAtual.textContent.length - 1
+    );
   }
 }
