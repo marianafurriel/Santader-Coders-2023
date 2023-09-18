@@ -53,28 +53,27 @@ function adicionarNumero(num) {
 }
 
 function resolver() {
-  console.log(operacao);
   switch (operacao) {
     case "-":
       numeroAtual.textContent =
-        primeiro_num - parseFloat(numeroAtual.textContent);
+        (primeiro_num - parseFloat(numeroAtual.textContent)).toFixed(2);
       primeiro_num = parseFloat(numeroAtual.textContent);
       break;
     case "+":
       numeroAtual.textContent =
-        primeiro_num + parseFloat(numeroAtual.textContent);
+        (primeiro_num + parseFloat(numeroAtual.textContent)).toFixed(2);
       primeiro_num = parseFloat(numeroAtual.textContent);
       break;
     case "/":
       if (numeroAtual.textContent !== "0") {
         numeroAtual.textContent =
-          primeiro_num / parseFloat(numeroAtual.textContent);
+          (primeiro_num / parseFloat(numeroAtual.textContent)).toFixed(2);
         primeiro_num = parseFloat(numeroAtual.textContent);
       }
       break;
     case "x":
       numeroAtual.textContent =
-        primeiro_num * parseFloat(numeroAtual.textContent);
+        (primeiro_num * parseFloat(numeroAtual.textContent)).toFixed(2);
       primeiro_num = parseFloat(numeroAtual.textContent);
       break;
   }
@@ -92,6 +91,8 @@ function resetar() {
   operacao = "";
   primeiro_num = "";
   ultimoCaracterEhOperador = false;
+  visor.classList.remove('background-verde');
+  visor.classList.remove('background-laranja');
 }
 
 function apagar() {
