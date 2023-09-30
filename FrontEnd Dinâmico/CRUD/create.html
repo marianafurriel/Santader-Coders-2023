@@ -53,28 +53,37 @@
     <div class="container mx-5 px-5 d-flex flex-column justify-content-center align-items-center">
       <form class="w-75">
         <div>
-          <label class="form-label" for="nome">Nome</label>
-          <input class="form-control" type="text" maxlength=20 id="nome" placeholder="Nome">
+          <label class="form-label mt-2" for="nome">Nome</label>
+          <input class="form-control mb-1" type="text" maxlength=20 id="nome" placeholder="Nome">
+          <span class="text-danger" id="nomeError"></span>
         </div>
         <div class="mb-2">
-          <label class="form-label" for="qtd">Quantidade</label>
-          <input class="form-control" type="number" min=0 id="quantidade" placeholder="quantidade">
+          <label class="form-label  mt-2" for="qtd">Quantidade</label>
+          <input class="form-control mb-1" type="number" min=0 id="quantidade" placeholder="quantidade">
+          <span class="text-danger" id="qtdError"></span>
+
         </div>
         <div class="mb-2">
-          <label class="form-label" for="linkImagem">URL da imagem</label>
-          <input class="form-control" type="text" id="linkImagem">
+          <label class="form-label mt-2" for="linkImagem">URL da imagem</label>
+          <input class="form-control mb-1" type="text" id="linkImagem">
+          <span class="text-danger" id="urlError"></span>
+
         </div>
         <div class="mb-2">
+          <span class="form-label mt-2">Tipo</span><br>
           <input type="radio" id="alimentos" name="tipo" value="alimentos">
-          <label class="form-label" for="alimentos">alimentos</label><br>
+          <label class="form-label" for="alimentos">Alimentos</label><br>
           <input type="radio" id="bebidas" name="tipo" value="bebidas">
-          <label class="form-label" for="bebidas">bebidas</label><br>
+          <label class="form-label" for="bebidas">Bebidas</label><br>
           <input type="radio" id="limpeza" name="tipo" value="limpeza">
-          <label class="form-label" for="limpeza">limpeza</label>
+          <label class="form-label mb-1" for="limpeza">Limpeza</label>
+          <br><span class="text-danger" id="tipoError"></span>
+
         </div>
         <div class="mb-2">
-          <label class="form-label" for="data">Data de entrega</label>
-          <input class="form-control" type="date" id="data">
+          <label class="form-label mt-2" for="data">Data de entrega</label>
+          <input class="form-control mb-1" type="date" id="data">
+          <span class="text-danger" id="dataError"></span>
         </div>
         <div class="mb-4">
           <label class="form-label" for="hora">Horário de entrega</label>
