@@ -1,21 +1,49 @@
 const URL =
-  "https://crudcrud.com/api/9299c78d2a75479bb3a3af215ecc8ca8/produtos";
+  "https://crudcrud.com/api/24c3d0d4511c4592a1c51168f6919523/produtos";
 
 const today = new Date().toISOString().split("T")[0];
 data.max = today;
+
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get("id");
+getProduto(id);
 
 adicionar.addEventListener("click", (e) => {
   e.preventDefault();
   const produto = gerarProduto();
   if (validarPropriedades(produto)) {
-    addProduto(produto).then((response) => {
-      if (response.status === 201) {
-        alert("Produto adicionado com sucesso!");
-        window.location.href = "./dashboard.html";
-      }
-    });
+    if (id) {
+      updateProduto(id, produto).then((response) => {
+        if (response.status === 200) {
+          alert("Produto atualizado com sucesso!");
+          window.location.href = "./read.html";
+        }
+      });
+    } else {
+      addProduto(produto).then((response) => {
+        if (response.status === 201) {
+          alert("Produto adicionado com sucesso!");
+          window.location.href = "./read.html";
+        }
+      });
+    }
   }
 });
+
+async function getProduto(id) {
+  if (id) {
+    const response = await fetch(URL + `/${id}`);
+    const produto = await response.json();
+    console.log(produto);
+    console.log(produto.tipo);
+    nome.value = produto.nome;
+    quantidade.value = Number(produto.qtd);
+    linkImagem.value = produto.img;
+    document.getElementById(produto.tipo).checked = true;
+    data.value = produto.data;
+    hora.value = produto.hora;
+  }
+}
 
 function validarPropriedades(produto) {
   nomeError.innerText = "";
@@ -73,6 +101,15 @@ async function addProduto(produto) {
   const response = await fetch(URL, {
     method: "POST",
     body: produtoJson,
+    headers: { "Content-Type": "application/json" },
+  });
+  return response;
+}
+
+async function updateProduto(id, produto) {
+  const response = await fetch(URL + `/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(produto),
     headers: { "Content-Type": "application/json" },
   });
   return response;
