@@ -1,5 +1,9 @@
-const URL =
-  "https://crudcrud.com/api/24c3d0d4511c4592a1c51168f6919523/produtos";
+if (localStorage.getItem("logado") !== "1") {
+  window.location.href = "./index.html";
+}
+
+const URL = JSON.parse(localStorage.getItem("url"));
+
 
 const today = new Date().toISOString().split("T")[0];
 data.max = today;

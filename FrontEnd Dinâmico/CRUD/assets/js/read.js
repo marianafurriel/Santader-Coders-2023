@@ -1,24 +1,33 @@
-const URL =
-  "https://crudcrud.com/api/24c3d0d4511c4592a1c51168f6919523/produtos";
+if (localStorage.getItem("logado") !== "1") {
+  window.location.href = "./index.html";
+}
+
+const URL = JSON.parse(localStorage.getItem("url"));
 
 read();
+const interval = setInterval(read, 5000);
+
 async function read() {
-  const produtos = await pegar();
+  const produtos = await pegarLista();
+  localStorage.setItem("produtos", JSON.stringify(produtos));
   bodyTabela.innerHTML = "";
+
   produtos.forEach((produto) => {
     const botaoDelete = document.createElement("button");
     botaoDelete.textContent = "Deletar";
-
+    botaoDelete.classList.add("btn", "btn-danger");
     botaoDelete.addEventListener("click", () => {
       deletar(produto._id, produto.nome);
     });
 
     const botaoUpdate = document.createElement("button");
     botaoUpdate.textContent = "Update";
+    botaoUpdate.classList.add("btn", "btn-light", "m-2");
     botaoUpdate.addEventListener("click", () => {
       window.location.href = `./create.html?id=${produto._id}`;
     });
     const tdBotoes = document.createElement("td");
+    tdBotoes.classList.add("text-center");
     tdBotoes.appendChild(botaoDelete);
     tdBotoes.appendChild(botaoUpdate);
     //cria a linha do produto
@@ -67,7 +76,7 @@ async function read() {
   console.log(produtos);
 }
 
-async function pegar() {
+async function pegarLista() {
   const produtos = await fetch(URL);
   return await produtos.json();
 }
