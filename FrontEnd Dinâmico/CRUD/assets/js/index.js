@@ -4,9 +4,9 @@ login.addEventListener("submit", (e) => {
   window.location.href = "./dashboard.html";
 });
 
-localStorage.setItem(
-  "url",
-  JSON.stringify(
-    "https://crudcrud.com/api/68cd77799c5046af9581011ce49dc856/produtos"
-  )
-);
+// localStorage.setItem(
+//   "url",
+//   JSON.stringify(
+//     "https://crudcrud.com/api/949c4aaf8acd474b98964424eeb3d4bb/produtos"
+//   )
+// );

@@ -5,35 +5,26 @@ if (localStorage.getItem("logado") !== "1") {
 const URL = JSON.parse(localStorage.getItem("url"));
 
 read();
-const interval = setInterval(read, 5000);
+// const interval = setInterval(read, 5000);
 
 async function read() {
   const produtos = await pegarLista();
   localStorage.setItem("produtos", JSON.stringify(produtos));
   bodyTabela.innerHTML = "";
 
-  produtos.forEach((produto) => {
-    const botaoDelete = document.createElement("button");
-    botaoDelete.textContent = "Deletar";
-    botaoDelete.classList.add("btn", "btn-danger");
-    botaoDelete.addEventListener("click", () => {
-      deletar(produto._id, produto.nome);
-    });
+  produtos.forEach((produto, indice) => {
+    if (window.location.href.indexOf("/dashboard.html") !== -1 && indice > 4) {
+      return;
+    }
 
-    const botaoUpdate = document.createElement("button");
-    botaoUpdate.textContent = "Update";
-    botaoUpdate.classList.add("btn", "btn-light", "m-2");
-    botaoUpdate.addEventListener("click", () => {
-      window.location.href = `./create.html?id=${produto._id}`;
-    });
-    const tdBotoes = document.createElement("td");
-    tdBotoes.classList.add("text-center");
-    tdBotoes.appendChild(botaoDelete);
-    tdBotoes.appendChild(botaoUpdate);
     //cria a linha do produto
     const trProduto = document.createElement("tr");
     trProduto.classList.add("align-middle");
-
+    trProduto.setAttribute("data-bs-toggle", "modal");
+    trProduto.setAttribute("data-bs-target", "#exampleModal");
+    trProduto.addEventListener("click", () => {
+      editaModal(produto);
+    });
     //cria a imagem do produto
     const tdImg = document.createElement("td");
     const img = document.createElement("img");
@@ -63,6 +54,25 @@ async function read() {
     tdHora.classList.add("text-center");
     tdHora.textContent = produto.hora || "-";
 
+    //div dos botoes
+    const botaoDelete = document.createElement("button");
+    botaoDelete.textContent = "Deletar";
+    botaoDelete.classList.add("btn", "btn-danger");
+    botaoDelete.addEventListener("click", () => {
+      deletar(produto._id, produto.nome, trProduto);
+    });
+
+    const botaoUpdate = document.createElement("button");
+    botaoUpdate.textContent = "Update";
+    botaoUpdate.classList.add("btn", "btn-light", "m-2");
+    botaoUpdate.addEventListener("click", () => {
+      window.location.href = `./create.html?id=${produto._id}`;
+    });
+    const tdBotoes = document.createElement("td");
+    tdBotoes.classList.add("text-center");
+    tdBotoes.appendChild(botaoDelete);
+    tdBotoes.appendChild(botaoUpdate);
+
     trProduto.appendChild(tdImg);
     trProduto.appendChild(tdNome);
     trProduto.appendChild(tdQtd);
@@ -73,7 +83,33 @@ async function read() {
 
     bodyTabela.appendChild(trProduto);
   });
-  console.log(produtos);
+}
+
+function editaModal(produto) {
+  const corpoModal = document.getElementById("corpoModal");
+  corpoModal.innerHTML = "";
+
+  const img = document.createElement("img");
+  img.src = produto.img;
+
+  const div = document.createElement("div");
+  div.classList.add("ms-5");
+  const nome = document.createElement("p");
+  nome.textContent = produto.nome;
+  const qtd = document.createElement("p");
+  qtd.textContent = produto.qtd;
+  const data = document.createElement("p");
+  data.textContent = produto.data;
+  const hora = document.createElement("p");
+  hora.textContent = produto.hora;
+
+  div.appendChild(nome);
+  div.appendChild(qtd);
+  div.appendChild(data);
+  div.appendChild(hora);
+
+  corpoModal.appendChild(img);
+  corpoModal.appendChild(div);
 }
 
 async function pegarLista() {
@@ -81,7 +117,7 @@ async function pegarLista() {
   return await produtos.json();
 }
 
-async function deletar(id, nome) {
+async function deletar(id, nome, trProduto) {
   if (confirm(`Deseja mesmo deletar ${nome}?`)) {
     const response = await fetch(URL + `/${id}`, { method: "DELETE" });
     window.location.reload();
