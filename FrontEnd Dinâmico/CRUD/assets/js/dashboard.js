@@ -5,6 +5,6 @@ if (localStorage.getItem("logado") !== "1") {
 localStorage.setItem(
   "url",
   JSON.stringify(
-    "https://crudcrud.com/api/541b7aced1fb4617b87a5d27d1bc890c/produtos"
+    "https://crudcrud.com/api/8b8a9fe8642c42edb14ba048e69d4c55/produtos"
   )
 );

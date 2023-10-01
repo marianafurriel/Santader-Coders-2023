@@ -20,8 +20,7 @@ async function read() {
     //cria a linha do produto
     const trProduto = document.createElement("tr");
     trProduto.classList.add("align-middle");
-    trProduto.setAttribute("data-bs-toggle", "modal");
-    trProduto.setAttribute("data-bs-target", "#exampleModal");
+
     trProduto.addEventListener("click", () => {
       editaModal(produto);
     });
@@ -69,16 +68,33 @@ async function read() {
       window.location.href = `./create.html?id=${produto._id}`;
     });
     const tdBotoes = document.createElement("td");
-    tdBotoes.classList.add("text-center");
+    tdBotoes.classList.add("text-center", "border-start");
     tdBotoes.appendChild(botaoDelete);
     tdBotoes.appendChild(botaoUpdate);
 
     trProduto.appendChild(tdImg);
+    tdImg.setAttribute("data-bs-toggle", "modal");
+    tdImg.setAttribute("data-bs-target", "#exampleModal");
+
     trProduto.appendChild(tdNome);
+    tdNome.setAttribute("data-bs-toggle", "modal");
+    tdNome.setAttribute("data-bs-target", "#exampleModal");
+
     trProduto.appendChild(tdQtd);
+    tdQtd.setAttribute("data-bs-toggle", "modal");
+    tdQtd.setAttribute("data-bs-target", "#exampleModal");
+
     trProduto.appendChild(tdTipo);
+    tdTipo.setAttribute("data-bs-toggle", "modal");
+    tdTipo.setAttribute("data-bs-target", "#exampleModal");
+
     trProduto.appendChild(tdData);
+    tdData.setAttribute("data-bs-toggle", "modal");
+    tdData.setAttribute("data-bs-target", "#exampleModal");
+
     trProduto.appendChild(tdHora);
+    tdHora.setAttribute("data-bs-toggle", "modal");
+    tdHora.setAttribute("data-bs-target", "#exampleModal");
     trProduto.appendChild(tdBotoes);
 
     bodyTabela.appendChild(trProduto);
@@ -90,6 +106,7 @@ function editaModal(produto) {
   corpoModal.innerHTML = "";
 
   const img = document.createElement("img");
+  img.width = 100;
   img.src = produto.img;
 
   const div = document.createElement("div");

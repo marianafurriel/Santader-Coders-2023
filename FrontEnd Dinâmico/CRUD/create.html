@@ -55,12 +55,12 @@
     <form class="w-100">
       <div>
         <label class="form-label mt-2" for="nome">Nome</label>
-        <input class="form-control mb-1" type="text" maxlength=20 id="nome" placeholder="Nome">
+        <input class="form-control mb-1" type="text" maxlength=20 id="nome">
         <span class="text-danger" id="nomeError"></span>
       </div>
       <div class="mb-2">
         <label class="form-label  mt-2" for="qtd">Quantidade</label>
-        <input class="form-control mb-1" type="number" min=0 id="quantidade" placeholder="quantidade">
+        <input class="form-control mb-1" type="number" min=0 id="quantidade">
         <span class="text-danger" id="qtdError"></span>
 
       </div>
@@ -91,6 +91,7 @@
         <input class="form-control" type="time" id="hora">
       </div>
       <input class="btn btn-success" type="submit" value="Adicionar produto" id="adicionar">
+      <input class="btn btn-danger" type="reset" value="Limpar formulário">
     </form>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
