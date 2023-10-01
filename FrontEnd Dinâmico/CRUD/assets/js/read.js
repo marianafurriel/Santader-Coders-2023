@@ -5,7 +5,7 @@ if (localStorage.getItem("logado") !== "1") {
 const URL = JSON.parse(localStorage.getItem("url"));
 
 read();
-// const interval = setInterval(read, 5000);
+const interval = setInterval(read, 5000);
 
 async function read() {
   const produtos = await pegarLista();
