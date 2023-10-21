@@ -12,6 +12,7 @@ import { DateGreaterThanTodayDirective } from './directives/date-greater-than-to
 import { TaskFiltroComponent } from './components/task-filtro/task-filtro.component';
 import { ColunaQuadroComponent } from './components/coluna-quadro/coluna-quadro.component';
 import { QuadroComponent } from './components/quadro/quadro.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,7 @@ import { QuadroComponent } from './components/quadro/quadro.component';
     ColunaQuadroComponent,
     QuadroComponent,
   ],
-  imports: [BrowserModule, FormsModule, BrowserAnimationsModule],
+  imports: [BrowserModule, FormsModule, BrowserAnimationsModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 })
