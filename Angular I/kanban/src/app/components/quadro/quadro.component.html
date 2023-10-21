@@ -1,5 +1,7 @@
-<div class="container">
-  <app-coluna-quadro status=toDo [tasks]="tasks"></app-coluna-quadro>
-  <app-coluna-quadro status=trabalhando [tasks]="tasks"></app-coluna-quadro>
-  <app-coluna-quadro status=finalizado [tasks]="tasks"></app-coluna-quadro>
+<div class="container my-5">
+  <div class="row">
+    <app-coluna-quadro class="col-4" status=toDo [tasks]="tasks"></app-coluna-quadro>
+    <app-coluna-quadro class="col-4" status=trabalhando [tasks]="tasks"></app-coluna-quadro>
+    <app-coluna-quadro class="col-4" status=finalizado [tasks]="tasks"></app-coluna-quadro>
+  </div>
 </div>
