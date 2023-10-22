@@ -1,6 +1,11 @@
-<div class="text-center">
+<div class="text-center border border-warning">
   <h3>{{status}}</h3>
-  <div *ngFor="let task of tasks">
-    <app-sticker [task]="task"></app-sticker>
+  <div class="d-flex flex-wrap justify-content-center align-items-center">
+    <div *ngFor=" let task of tasks" class="m-3 {{task.color}}">
+      <p>{{ task.title }}</p>
+      <p>{{ "01/02/2020" | date : "dd/MM/yyyy" }}</p>
+      <p>{{ task.description}}</p>
+      <p>{{task.status}}</p>
+    </div>
   </div>
 </div>

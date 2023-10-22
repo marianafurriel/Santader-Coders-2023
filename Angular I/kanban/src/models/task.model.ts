@@ -6,10 +6,10 @@ export class Task {
   color: string;
 
   constructor(
-    title = 'Nome da tarefa',
-    description = 'Description default',
+    title = '',
+    description = '',
     date = new Date(),
-    status = 'toDo',
+    status = '',
     color = 'bg-primary-subtle'
   ) {
     this.title = title;
