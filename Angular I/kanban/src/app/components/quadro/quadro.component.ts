@@ -7,5 +7,5 @@ import { Task } from 'src/models/task.model';
   styleUrls: ['./quadro.component.scss'],
 })
 export class QuadroComponent {
-  @Input() tasks: Task[] = [];
+  @Input() tasks!: Task[];
 }

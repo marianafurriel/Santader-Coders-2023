@@ -1,21 +1,52 @@
-<div class="container col-6 my-3">
-  <h3>Adicionar nova tarefa</h3>
+<div class="container col-3 my-3">
 
   <form (ngSubmit)="submitTask()">
-    <input placeholder="Titulo" id="title" class="form-control border-dark px-3 py-2 my-3" type="text"
-      [(ngModel)]="newTask.title" name="title" />
+    <div class="rounded-5 p-3 formulario {{newTask.color}}">
 
-    <input placeholder="Descrição" id="description" class="form-control border-dark px-3 py-2 my-3" type="text"
-      [(ngModel)]="newTask.description" name="description" />
+      <input placeholder="Titulo" id="title" class="form-control border-dark px-3 py-2 my-3" type="text"
+        [(ngModel)]="newTask.title" name="title"/>
 
-    <input id="date" class="form-control border-dark px-3 py-2" type="date" [(ngModel)]="newTask.date" name="date" />
+      <input placeholder="Descrição" id="description" class="form-control border-dark px-3 py-2 my-3" type="text"
+        [(ngModel)]="newTask.description" name="description" />
 
-    <select class="form-select border-dark px-3 py-2 my-3" name="status" [(ngModel)]="newTask.status">
-      <option value="" disabled selected>Selecione o status</option>
-      <option value="toDo">ToDo</option>
-      <option value="trabalhando">Trabalhando</option>
-      <option value="finalizado">Finalizado</option>
-    </select>
+      <input id="date" class="form-control border-dark px-3 py-2" type="date" [(ngModel)]="newTask.date" name="date" />
+
+      <select class="form-select border-dark px-3 py-2 my-3" name="status" [(ngModel)]="newTask.status" required>
+        <option value="" disabled selected>Selecione o status</option>
+        <option value="toDo">toDo</option>
+        <option value="trabalhando">trabalhando</option>
+        <option value="finalizado">finalizado</option>
+      </select>
+    </div>
+
+    <div class="form-cores mt-1">
+
+      <div class="d-flex justify-content-between bg-white p-2">
+        <input type="radio" name="color" value="bg-primary-subtle" id="opcao1" class="form-check-input"
+          [(ngModel)]="newTask.color">
+        <label for="opcao1" class="bg-primary-subtle"></label>
+
+
+        <input type="radio" name="color" value="bg-success-subtle" id="opcao2" class="form-check-input"
+          [(ngModel)]="newTask.color">
+        <label for="opcao2" class="bg-success-subtle"></label>
+
+        <input type="radio" name="color" value="bg-danger-subtle" id="opcao3" class="form-check-input"
+          [(ngModel)]="newTask.color">
+        <label for="opcao3" class="bg-danger-subtle"></label>
+
+
+        <input type="radio" name="color" value="bg-warning-subtle" id="opcao4" class="form-check-input"
+          [(ngModel)]="newTask.color">
+        <label for="opcao4" class="bg-warning-subtle"></label>
+
+
+        <input type="radio" name="color" value="bg-dark-subtle" id="opcao5" class="form-check-input"
+          [(ngModel)]="newTask.color">
+        <label for="opcao5" class="bg-dark-subtle"></label>
+      </div>
+
+    </div>
 
     <button type="submit" class="btn btn-primary px-4">Adicionar</button>
   </form>

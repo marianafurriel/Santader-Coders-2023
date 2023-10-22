@@ -4,7 +4,7 @@ import {
   EventEmitter,
   Input,
   Output,
-  OnInit
+  OnInit,
 } from '@angular/core';
 import { Task } from 'src/models/task.model';
 
@@ -21,7 +21,6 @@ export class TaskListComponent implements OnInit {
 
   tasksFiltradas: Task[] = [];
 
-
   ngOnInit() {
     this.tasksFiltradas = this.tasks;
   }
@@ -35,6 +34,7 @@ export class TaskListComponent implements OnInit {
   }
 
   handleFiltro(filtro: string) {
+    console.log('handle filtro task list');
     if (filtro === 'all') {
       this.tasksFiltradas = this.tasks;
       return;

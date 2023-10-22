@@ -1,9 +1,16 @@
 <div class="container">
   <app-task-form (addTask)="onAddTask($event)"></app-task-form>
 
-  <app-quadro [tasks]="listTask"></app-quadro>
+
+  <div class="container my-5">
+    <div class="row">
+      <app-coluna-quadro class="col-4" status=toDo [tasks]="todoTasks"></app-coluna-quadro>
+      <app-coluna-quadro class="col-4" status=trabalhando [tasks]="trabalhandoTasks"></app-coluna-quadro>
+      <app-coluna-quadro class="col-4" status=finalizado [tasks]="finalizadasTasks"></app-coluna-quadro>
+    </div>
+  </div>
+  <app-task-list [tasks]="listTask" (handleTask)="handleTask($event)"></app-task-list>
   <div *ngIf="selectedTask">
     <app-task-detail [task]="selectedTask" (closeDetail)="fecharDetalhes()"></app-task-detail>
   </div>
-  <app-task-list [tasks]="listTask" (handleTask)="handleTask($event)"></app-task-list>
 </div>

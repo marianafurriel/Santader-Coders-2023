@@ -1,14 +1,6 @@
-<div class="text-center"
-  [ngClass]="{'bg-danger': status==='toDo', 'bg-warning':status==='trabalhando','bg-success':status=='finalizado'}">
-  <h3>{{status | titlecase}}</h3>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item" *ngFor="let task of tasksFiltradas">
-      <div appDateGreaterThanToday [Date]="task.date">
-        {{ task.title }}
-        {{ "01/02/2020" | date : "dd/MM/yyyy" }} -
-        {{ task.description | uppercase | slice : 0 : 5 }}
-        {{ task.status }}
-      </div>
-    </li>
-  </ul>
+<div class="text-center">
+  <h3>{{status}}</h3>
+  <div *ngFor="let task of tasks">
+    <app-sticker [task]="task"></app-sticker>
+  </div>
 </div>
