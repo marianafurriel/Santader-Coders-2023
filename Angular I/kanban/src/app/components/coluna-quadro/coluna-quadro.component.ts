@@ -16,4 +16,7 @@ import { Task } from 'src/models/task.model';
 export class ColunaQuadroComponent {
   @Input() status!: string;
   @Input() tasks: Task[] = [];
+  tasksFiltradas: Task[] = [];
+
+  
 }

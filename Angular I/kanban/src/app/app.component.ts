@@ -208,116 +208,117 @@ export class AppComponent {
   // listTask: Array<IListTask> = [];
   selectedTask: Task | null = null;
   // listTask: Task[] = [];
-  todoTasks: Task[] = [
-    {
-      color: 'bg-primary-subtle',
-      date: new Date(),
-      description: 'description01',
-      status: 'toDo',
-      title: 'title01',
-    },
-    {
-      color: 'bg-secondary-subtle',
-      date: new Date(),
-      description: 'description01',
-      status: 'toDo',
-      title: 'title02',
-    },
-    {
-      color: 'bg-primary',
-      date: new Date(),
-      description: 'description01',
-      status: 'toDo',
-      title: 'title03',
-    },
-    {
-      color: 'bg-primary',
-      date: new Date(),
-      description: 'description01',
-      status: 'toDo',
-      title: 'title04',
-    },
-    {
-      color: 'bg-primary',
-      date: new Date(),
-      description: 'description01',
-      status: 'toDo',
-      title: 'title05',
-    },
-  ];
-  trabalhandoTasks: Task[] = [
-    {
-      color: 'bg-primary',
-      date: new Date(),
-      description: 'description01',
-      status: 'trabalhando',
-      title: 'title06',
-    },
-    {
-      color: 'bg-primary',
-      date: new Date(),
-      description: 'description01',
-      status: 'trabalhando',
-      title: 'title07',
-    },
-    {
-      color: 'bg-primary',
-      date: new Date(),
-      description: 'description01',
-      status: 'trabalhando',
-      title: 'title08',
-    },
-    {
-      color: 'bg-primary',
-      date: new Date(),
-      description: 'description01',
-      status: 'trabalhando',
-      title: 'title09',
-    },
-    {
-      color: 'bg-primary',
-      date: new Date(),
-      description: 'description01',
-      status: 'trabalhando',
-      title: 'title10',
-    },
-  ];
+  todoTasks: Task[] = [];
+  // [
+  //   {
+  //     color: 'bg-primary-subtle',
+  //     date: new Date(),
+  //     description: 'description01',
+  //     status: 'toDo',
+  //     title: 'title01',
+  //   },
+  //   {
+  //     color: 'bg-secondary-subtle',
+  //     date: new Date(),
+  //     description: 'description01',
+  //     status: 'toDo',
+  //     title: 'title02',
+  //   },
+  //   {
+  //     color: 'bg-primary',
+  //     date: new Date(),
+  //     description: 'description01',
+  //     status: 'toDo',
+  //     title: 'title03',
+  //   },
+  //   {
+  //     color: 'bg-primary',
+  //     date: new Date(),
+  //     description: 'description01',
+  //     status: 'toDo',
+  //     title: 'title04',
+  //   },
+  //   {
+  //     color: 'bg-primary',
+  //     date: new Date(),
+  //     description: 'description01',
+  //     status: 'toDo',
+  //     title: 'title05',
+  //   },
+  // ];
+  trabalhandoTasks: Task[] = [];
+  //   {
+  //     color: 'bg-primary',
+  //     date: new Date(),
+  //     description: 'description01',
+  //     status: 'trabalhando',
+  //     title: 'title06',
+  //   },
+  //   {
+  //     color: 'bg-primary',
+  //     date: new Date(),
+  //     description: 'description01',
+  //     status: 'trabalhando',
+  //     title: 'title07',
+  //   },
+  //   {
+  //     color: 'bg-primary',
+  //     date: new Date(),
+  //     description: 'description01',
+  //     status: 'trabalhando',
+  //     title: 'title08',
+  //   },
+  //   {
+  //     color: 'bg-primary',
+  //     date: new Date(),
+  //     description: 'description01',
+  //     status: 'trabalhando',
+  //     title: 'title09',
+  //   },
+  //   {
+  //     color: 'bg-primary',
+  //     date: new Date(),
+  //     description: 'description01',
+  //     status: 'trabalhando',
+  //     title: 'title10',
+  //   },
+  // ];
   finalizadasTasks: Task[] = [
-    {
-      color: 'bg-primary',
-      date: new Date(),
-      description: 'description01',
-      status: 'finalizado',
-      title: 'title13',
-    },
-    {
-      color: 'bg-primary',
-      date: new Date(),
-      description: 'description01',
-      status: 'finalizado',
-      title: 'title14',
-    },
-    {
-      color: 'bg-primary',
-      date: new Date(),
-      description: 'description01',
-      status: 'finalizado',
-      title: 'title15',
-    },
-    {
-      color: 'bg-primary',
-      date: new Date(),
-      description: 'description01',
-      status: 'finalizado',
-      title: 'title16',
-    },
-    {
-      color: 'bg-primary',
-      date: new Date(),
-      description: 'description01',
-      status: 'finalizado',
-      title: 'title17',
-    },
+    // {
+    //   color: 'bg-primary',
+    //   date: new Date(),
+    //   description: 'description01',
+    //   status: 'finalizado',
+    //   title: 'title13',
+    // },
+    // {
+    //   color: 'bg-primary',
+    //   date: new Date(),
+    //   description: 'description01',
+    //   status: 'finalizado',
+    //   title: 'title14',
+    // },
+    // {
+    //   color: 'bg-primary',
+    //   date: new Date(),
+    //   description: 'description01',
+    //   status: 'finalizado',
+    //   title: 'title15',
+    // },
+    // {
+    //   color: 'bg-primary',
+    //   date: new Date(),
+    //   description: 'description01',
+    //   status: 'finalizado',
+    //   title: 'title16',
+    // },
+    // {
+    //   color: 'bg-primary',
+    //   date: new Date(),
+    //   description: 'description01',
+    //   status: 'finalizado',
+    //   title: 'title17',
+    // },
   ];
 
   onAddTask(task: Task) {

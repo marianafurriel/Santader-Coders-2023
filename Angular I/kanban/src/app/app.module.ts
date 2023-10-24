@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { CurrencyFormatPipe } from './pipes/currency-format.pipe';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
@@ -14,6 +14,7 @@ import { ColunaQuadroComponent } from './components/coluna-quadro/coluna-quadro.
 import { QuadroComponent } from './components/quadro/quadro.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StickerComponent } from './components/sticker/sticker.component';
+import { TaskFormReativoComponent } from './components/task-form-reativo/task-form-reativo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,8 +27,15 @@ import { StickerComponent } from './components/sticker/sticker.component';
     ColunaQuadroComponent,
     QuadroComponent,
     StickerComponent,
+    TaskFormReativoComponent,
   ],
-  imports: [BrowserModule, FormsModule, BrowserAnimationsModule, NgbModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    NgbModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
