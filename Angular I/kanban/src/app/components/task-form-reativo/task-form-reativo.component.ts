@@ -27,7 +27,9 @@ export class TaskFormReativoComponent {
   constructor(private formBuilder: FormBuilder) {}
 
   submitTask() {
-    this.addTask.emit(this.newTask);
-    this.newTask = new Task();
+    if (this.formTask.invalid) return;
+    this.addTask.emit(this.formTask.value);
+    this.formTask.reset();
+    // this.newTask = new Task();
   }
 }

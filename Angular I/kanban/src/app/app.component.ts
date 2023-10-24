@@ -7,6 +7,7 @@ import { Task } from 'src/models/task.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  taskLog: Task[] = [];
   listTask: Task[] = [
     {
       color: 'bg-primary-subtle',
@@ -335,7 +336,7 @@ export class AppComponent {
   }
 
   handleTask(task: Task) {
-    this.selectedTask = task;
+    this.taskLog.push(task);
   }
 
   fecharDetalhes() {
