@@ -337,6 +337,7 @@ export class AppComponent {
 
   handleTask(task: Task) {
     this.taskLog.push(task);
+    this.selectedTask = task;
   }
 
   fecharDetalhes() {

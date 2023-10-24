@@ -1,7 +1,7 @@
-<div class="container col-3 my-3 text-center">
+<div class="container my-3 text-center">
 
   <form (ngSubmit)="submitTask()" [formGroup]="formTask">
-    <div class="rounded-5 p-3 formulario {{newTask.color}}">
+    <div class="rounded-5 p-3 formulario {{this.formTask.value.color}}">
 
       <input placeholder="Titulo" id="title" class="form-control border-dark px-3 py-2 my-3" type="text"
         formControlName="title" name="title" maxlength="20" required />

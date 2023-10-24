@@ -28,6 +28,7 @@ export class TaskFormReativoComponent {
 
   submitTask() {
     if (this.formTask.invalid) return;
+    console.log(this.formTask.value);
     this.addTask.emit(this.formTask.value);
     this.formTask.reset();
     // this.newTask = new Task();

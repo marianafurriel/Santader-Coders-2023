@@ -13,7 +13,6 @@ import { TaskFiltroComponent } from './components/task-filtro/task-filtro.compon
 import { ColunaQuadroComponent } from './components/coluna-quadro/coluna-quadro.component';
 import { QuadroComponent } from './components/quadro/quadro.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { StickerComponent } from './components/sticker/sticker.component';
 import { TaskFormReativoComponent } from './components/task-form-reativo/task-form-reativo.component';
 import { TaskLogComponent } from './components/task-log/task-log.component';
 @NgModule({
@@ -27,7 +26,6 @@ import { TaskLogComponent } from './components/task-log/task-log.component';
     TaskFiltroComponent,
     ColunaQuadroComponent,
     QuadroComponent,
-    StickerComponent,
     TaskFormReativoComponent,
     TaskLogComponent,
   ],
