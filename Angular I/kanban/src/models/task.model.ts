@@ -1,14 +1,14 @@
 export class Task {
   title: string;
   description: string;
-  date: Date;
+  date: string | Date;
   status: string;
   color: string;
 
   constructor(
     title = '',
     description = '',
-    date = new Date(),
+    date = '',
     status = '',
     color = 'bg-primary-subtle'
   ) {

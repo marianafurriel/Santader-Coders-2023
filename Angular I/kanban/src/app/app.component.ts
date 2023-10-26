@@ -7,6 +7,7 @@ import { Task } from 'src/models/task.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  taskEditar!: Task;
   taskLog: Task[] = [];
   listTask: Task[] = [
     {
@@ -209,7 +210,15 @@ export class AppComponent {
   // listTask: Array<IListTask> = [];
   selectedTask: Task | null = null;
   // listTask: Task[] = [];
-  todoTasks: Task[] = [];
+  todoTasks: Task[] = [
+    {
+      color: 'bg-primary-subtle',
+      date: new Date(),
+      description: 'description01',
+      status: 'toDo',
+      title: 'title01',
+    },
+  ];
   // [
   //   {
   //     color: 'bg-primary-subtle',
@@ -338,6 +347,10 @@ export class AppComponent {
   handleTask(task: Task) {
     this.taskLog.push(task);
     this.selectedTask = task;
+  }
+
+  editarTask(task: Task) {
+    this.taskEditar = task;
   }
 
   fecharDetalhes() {

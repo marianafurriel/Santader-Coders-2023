@@ -14,7 +14,6 @@ import { ColunaQuadroComponent } from './components/coluna-quadro/coluna-quadro.
 import { QuadroComponent } from './components/quadro/quadro.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TaskFormReativoComponent } from './components/task-form-reativo/task-form-reativo.component';
-import { TaskLogComponent } from './components/task-log/task-log.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +26,6 @@ import { TaskLogComponent } from './components/task-log/task-log.component';
     ColunaQuadroComponent,
     QuadroComponent,
     TaskFormReativoComponent,
-    TaskLogComponent,
   ],
   imports: [
     BrowserModule,

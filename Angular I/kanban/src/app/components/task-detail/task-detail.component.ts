@@ -7,10 +7,15 @@ import { Task } from 'src/models/task.model';
   styleUrls: ['./task-detail.component.scss'],
 })
 export class TaskDetailComponent {
-  @Input() task = new Task();
+  @Input() task!: Task;
   @Output() closeDetail = new EventEmitter();
+  @Output() editar = new EventEmitter();
 
   close() {
     this.closeDetail.emit();
+  }
+
+  editarHandle(task: Task) {
+    this.editar.emit(task);
   }
 }

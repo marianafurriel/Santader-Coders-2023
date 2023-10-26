@@ -1,5 +1,5 @@
 import { ThisReceiver } from '@angular/compiler';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Task } from 'src/models/task.model';
 
@@ -9,6 +9,7 @@ import { Task } from 'src/models/task.model';
   styleUrls: ['./task-form-reativo.component.scss'],
 })
 export class TaskFormReativoComponent {
+  @Input() taskEditar!: Task;
   public formTask: FormGroup = this.formBuilder.group({
     title: ['', Validators.required], //primeiro item é o valor default
     description: ['', Validators.required],
@@ -21,16 +22,29 @@ export class TaskFormReativoComponent {
 
   public newTask = new Task();
 
-  // ngOnInit() {
-  //   this.newTask.color = 'bg-primary-subtle';
-  // }
   constructor(private formBuilder: FormBuilder) {}
 
-  submitTask() {
+  ngOnChanges() {
+    this.formTask = this.formBuilder.group({
+      title: [this.taskEditar?.title, Validators.required], //primeiro item é o valor default
+      description: [this.taskEditar?.description, Validators.required],
+      date: [this.taskEditar?.date, Validators.required],
+      status: ['toDo', Validators.required],
+      color: ['bg-primary-subtle'],
+    });
+  }
+
+  submitTask(task = this.newTask) {
     if (this.formTask.invalid) return;
-    console.log(this.formTask.value);
+    console.log(task.date);
     this.addTask.emit(this.formTask.value);
-    this.formTask.reset();
-    // this.newTask = new Task();
+
+    this.formTask = this.formBuilder.group({
+      title: ['', Validators.required], //primeiro item é o valor default
+      description: ['', Validators.required],
+      date: ['', Validators.required],
+      status: ['toDo', Validators.required],
+      color: ['bg-primary-subtle'],
+    });
   }
 }
