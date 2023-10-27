@@ -3,7 +3,7 @@
   <div class="d-flex flex-wrap justify-content-center align-items-center">
     <ng-container *ngFor=" let task of tasks">
       <ng-container *ngIf="task.status===status||status=='Log'">
-        <div class="p-2 m-3 {{task.color}}" (click)="selectedTask(task)">
+        <div appDateGreaterThanToday [Date]="task.date" class="p-2 m-3 {{task.color}}" (click)="selectedTask(task)">
           <p class="m-1">{{ task.title }}</p>
           <!-- <p class="m-1">{{ "01/02/2020" | date : "dd/MM/yyyy" }}</p> -->
           <!-- <p class="m-1">{{ task.description}}</p> -->

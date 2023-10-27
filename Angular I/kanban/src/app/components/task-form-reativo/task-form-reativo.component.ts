@@ -31,8 +31,15 @@ export class TaskFormReativoComponent {
       title: [this.taskEditar?.title, Validators.required], //primeiro item é o valor default
       description: [this.taskEditar?.description, Validators.required],
       date: [this.taskEditar?.date, Validators.required],
-      status: ['toDo', Validators.required],
-      color: ['bg-primary-subtle'],
+      status: [
+        this.taskEditar?.status !== undefined ? this.taskEditar.status : 'toDo',
+        Validators.required,
+      ],
+      color: [
+        this.taskEditar?.color !== undefined
+          ? this.taskEditar.color
+          : 'bg-primary-subtle',
+      ],
     });
   }
 
