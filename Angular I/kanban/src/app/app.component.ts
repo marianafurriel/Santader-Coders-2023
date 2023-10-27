@@ -7,7 +7,7 @@ import { Task } from 'src/models/task.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  id = 15;
+  id = 0;
   taskEditar: Task | null = null;
   taskLog: Task[] = [];
   listTask: Task[] = [];
@@ -17,11 +17,10 @@ export class AppComponent implements OnInit {
     for (let i = 0; i < 15; i++) {}
   }
   onAddTask(task: Task) {
-    console.log(task);
     task.id = this.id;
-    console.log(task);
     this.id++;
     this.listTask.push(task);
+    console.log(this.listTask);
     return;
   }
 
