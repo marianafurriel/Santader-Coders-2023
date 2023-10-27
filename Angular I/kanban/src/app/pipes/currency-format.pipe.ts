@@ -10,9 +10,14 @@ interface IProps {
   name: 'currencyFormat',
 })
 export class CurrencyFormatPipe implements PipeTransform {
-  transform(value: string, args: IProps): unknown {
-    console.log(args);
-
+  transform(
+    value: number,
+    args: IProps = {
+      style: 'currency',
+      currency: 'BRL',
+      minimumFractionDigits: 2,
+    }
+  ): unknown {
     const formattedValue = Number(value).toLocaleString('pt-BR', args);
 
     return formattedValue;

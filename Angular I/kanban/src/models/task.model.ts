@@ -5,6 +5,8 @@ export class Task {
   date: string | Date;
   status: string;
   color: string;
+  valor: number;
+  tags: string[];
 
   constructor(
     id = 0,
@@ -12,13 +14,17 @@ export class Task {
     description = '',
     date = '',
     status = '',
-    color = 'bg-primary-subtle'
+    valor = 0,
+    color = 'bg-primary-subtle',
+    tags = []
   ) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.date = date;
     this.status = status;
+    this.valor = valor;
     this.color = color;
+    this.tags = tags;
   }
 }

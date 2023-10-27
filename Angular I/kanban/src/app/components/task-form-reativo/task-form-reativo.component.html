@@ -20,6 +20,20 @@
         <option value="finalizado">finalizado</option>
       </select>
 
+
+
+      <input id="valor" class="form-control border-dark px-3 py-2 my-3" type="number" formControlName="valor"
+        name="valor" min="0" />
+      <div *ngIf="formTask.get('valor')?.invalid && formTask.get('valor')?.touched">Valor deve ser maior ou igual a 0
+      </div>
+
+      <input type="button" (click)="addTag()" class="btn btn-secondary px-4" value="Adicionar tag">
+      <div class="form-group" formArrayName="tags">
+        <div *ngFor="let tag of tags.controls; let indice = index">
+          <input type="text" id="tags" [formControlName]="indice">
+        </div>
+      </div>
+
     </div>
 
     <div class="form-cores my-2">

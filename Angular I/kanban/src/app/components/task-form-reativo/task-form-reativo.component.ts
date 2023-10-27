@@ -1,6 +1,12 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  NgForm,
+  Validators,
+} from '@angular/forms';
 import { Task } from 'src/models/task.model';
 
 @Component({
@@ -10,19 +16,26 @@ import { Task } from 'src/models/task.model';
 })
 export class TaskFormReativoComponent {
   @Input() taskEditar: Task | null = null;
+
   public formTask: FormGroup = this.formBuilder.group({
     title: ['', Validators.required], //primeiro item é o valor default
     description: ['', Validators.required],
     date: ['', Validators.required],
     status: ['toDo', Validators.required],
+    valor: [0, [Validators.min(0), Validators.required]],
+    tags: this.formBuilder.array([]),
     color: ['bg-primary-subtle'],
   });
 
   @Output() addTask = new EventEmitter();
   @Output() editTask = new EventEmitter();
 
-  public newTask = new Task();
+  get tags() {
+    return this.formTask.get('tags') as FormArray;
+  }
 
+  public newTask = new Task();
+  // tags: string[] = [];
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnChanges() {
@@ -35,11 +48,19 @@ export class TaskFormReativoComponent {
         this.taskEditar?.status !== undefined ? this.taskEditar.status : 'toDo',
         Validators.required,
       ],
+      valor: [
+        this.taskEditar?.valor !== undefined ? this.taskEditar.valor : 0,
+        Validators.min(0),
+      ],
       color: [
         this.taskEditar?.color !== undefined
           ? this.taskEditar.color
           : 'bg-primary-subtle',
       ],
+      tags:
+        this.taskEditar?.tags.length === 0
+          ? this.formBuilder.array(this.taskEditar.tags)
+          : this.formBuilder.array([]),
     });
   }
 
@@ -57,7 +78,12 @@ export class TaskFormReativoComponent {
       description: ['', Validators.required],
       date: ['', Validators.required],
       status: ['toDo', Validators.required],
+      tags: this.formBuilder.array([]),
       color: ['bg-primary-subtle'],
     });
+  }
+
+  addTag() {
+    this.tags.push(this.formBuilder.control(''));
   }
 }
