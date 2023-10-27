@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row d-flex">
-    <app-task-form-reativo (addTask)="onAddTask($event)" class="offset-1 col-4" [taskEditar]="taskEditar">
+    <app-task-form-reativo (editTask)="onEditTask($event)" (addTask)="onAddTask($event)" class="offset-1 col-4"
+      [taskEditar]="taskEditar">
     </app-task-form-reativo>
     <!-- <app-task-form (addTask)="onAddTask($event)"></app-task-form> -->
     <div *ngIf="selectedTask" class="col-4 offset-2 align-self-center">
@@ -11,11 +12,11 @@
 
   <div class="container my-5">
     <div class="row">
-      <app-coluna-quadro class="col-4" status=toDo [tasks]="todoTasks"
+      <app-coluna-quadro class="col-4" status=toDo [tasks]="listTask"
         (handleTask)="handleTask($event)"></app-coluna-quadro>
-      <app-coluna-quadro class="col-4" status=trabalhando [tasks]="trabalhandoTasks"
+      <app-coluna-quadro class="col-4" status=trabalhando [tasks]="listTask"
         (handleTask)="handleTask($event)"></app-coluna-quadro>
-      <app-coluna-quadro class="col-4" status=finalizado [tasks]="finalizadasTasks"
+      <app-coluna-quadro class="col-4" status=finalizado [tasks]="listTask"
         (handleTask)="handleTask($event)"></app-coluna-quadro>
     </div>
   </div>

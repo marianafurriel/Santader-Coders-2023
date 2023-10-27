@@ -9,7 +9,7 @@ import { Task } from 'src/models/task.model';
   styleUrls: ['./task-form-reativo.component.scss'],
 })
 export class TaskFormReativoComponent {
-  @Input() taskEditar!: Task;
+  @Input() taskEditar: Task | null = null;
   public formTask: FormGroup = this.formBuilder.group({
     title: ['', Validators.required], //primeiro item é o valor default
     description: ['', Validators.required],
@@ -19,6 +19,7 @@ export class TaskFormReativoComponent {
   });
 
   @Output() addTask = new EventEmitter();
+  @Output() editTask = new EventEmitter();
 
   public newTask = new Task();
 
@@ -26,6 +27,7 @@ export class TaskFormReativoComponent {
 
   ngOnChanges() {
     this.formTask = this.formBuilder.group({
+      id: [this.taskEditar?.id],
       title: [this.taskEditar?.title, Validators.required], //primeiro item é o valor default
       description: [this.taskEditar?.description, Validators.required],
       date: [this.taskEditar?.date, Validators.required],
@@ -36,8 +38,12 @@ export class TaskFormReativoComponent {
 
   submitTask(task = this.newTask) {
     if (this.formTask.invalid) return;
-    console.log(task.date);
-    this.addTask.emit(this.formTask.value);
+
+    if (this.taskEditar) {
+      this.editTask.emit(this.formTask.value);
+    } else {
+      this.addTask.emit(this.formTask.value);
+    }
 
     this.formTask = this.formBuilder.group({
       title: ['', Validators.required], //primeiro item é o valor default
