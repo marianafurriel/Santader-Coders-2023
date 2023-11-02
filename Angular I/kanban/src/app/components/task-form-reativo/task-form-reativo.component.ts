@@ -39,28 +39,32 @@ export class TaskFormReativoComponent {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnChanges() {
-    this.formTask = this.formBuilder.group({
-      id: [this.taskEditar?.id],
-      title: [this.taskEditar?.title, Validators.required], //primeiro item é o valor default
-      description: [this.taskEditar?.description, Validators.required],
-      date: [this.taskEditar?.date, Validators.required],
-      status: [
-        this.taskEditar?.status !== undefined ? this.taskEditar.status : 'toDo',
-        Validators.required,
-      ],
-      valor: [
-        this.taskEditar?.valor !== undefined ? this.taskEditar.valor : 0,
-        Validators.min(0),
-      ],
-      color: [
-        this.taskEditar?.color !== undefined
-          ? this.taskEditar.color
-          : 'bg-primary-subtle',
-      ],
-      tags:
-        this.taskEditar?.tags.length === 0
-          ? this.formBuilder.array(this.taskEditar.tags)
-          : this.formBuilder.array([]),
+    this.formTask.patchValue({ ...this.editTask });
+    // this.formTask = this.formBuilder.group({
+    //   id: [this.taskEditar?.id],
+    //   title: [this.taskEditar?.title, Validators.required], //primeiro item é o valor default
+    //   description: [this.taskEditar?.description, Validators.required],
+    //   date: [this.taskEditar?.date, Validators.required],
+    //   status: [
+    //     this.taskEditar?.status !== undefined ? this.taskEditar.status : 'toDo',
+    //     Validators.required,
+    //   ],
+    //   valor: [
+    //     this.taskEditar?.valor !== undefined ? this.taskEditar.valor : 0,
+    //     Validators.min(0),
+    //   ],
+    //   color: [
+    //     this.taskEditar?.color !== undefined
+    //       ? this.taskEditar.color
+    //       : 'bg-primary-subtle',
+    //   ],
+    //   tags:
+    //     this.taskEditar?.tags.length === 0
+    //       ? this.formBuilder.array(this.taskEditar.tags)
+    //       : this.formBuilder.array([]),
+    // });
+    this.taskEditar?.tags.forEach((e) => {
+      this.addTag(e);
     });
   }
 
@@ -83,7 +87,7 @@ export class TaskFormReativoComponent {
     });
   }
 
-  addTag() {
-    this.tags.push(this.formBuilder.control(''));
+  addTag(e = '') {
+    this.tags.push(this.formBuilder.control(e));
   }
 }

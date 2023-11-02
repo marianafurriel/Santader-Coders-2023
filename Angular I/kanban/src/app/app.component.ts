@@ -37,6 +37,7 @@ export class AppComponent implements OnInit {
         console.log(this.listTask);
         this.listTask[i] = task;
         console.log(this.listTask);
+        break;
       }
     }
     for (let i = 0; i < this.taskLog.length; i++) {
