@@ -1,6 +1,6 @@
 <div class="container my-3 text-center">
 
-  <form (ngSubmit)="submitTask()" [formGroup]="formTask">
+  <form [formGroup]="formTask">
     <div class="rounded-5 p-3 formulario {{this.formTask.value.color}}">
 
       <input placeholder="Titulo" id="title" class="form-control border-dark px-3 py-2 my-3" type="text"
@@ -65,7 +65,7 @@
 
     </div>
 
-    <button *ngIf="!taskEditar" type="submit" class="btn btn-info px-4">Adicionar</button>
-    <button *ngIf="taskEditar" type="submit" class="btn btn-info px-4">Editar</button>
+    <button *ngIf="!taskEditar" type="submit" class="btn btn-info px-4" (click)='submitTask()'>Adicionar</button>
+    <button *ngIf="taskEditar" type="submit" class="btn btn-info px-4" (click)='submitTask(true)'>Editar</button>
   </form>
 </div>

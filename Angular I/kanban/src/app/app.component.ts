@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { take } from 'rxjs';
 import { Task } from 'src/models/task.model';
+import { AppService } from './app.service';
+import { TaskType } from 'src/types/taskType';
+// import { AppService } from '/app.service';
 
 @Component({
   selector: 'app-root',
@@ -13,30 +17,41 @@ export class AppComponent implements OnInit {
   listTask: Task[] = [];
   selectedTask: Task | null = null;
 
+  constructor(private _taskService: AppService) {}
+
   ngOnInit() {
-    for (let i = 0; i < 15; i++) {}
+    this.atualizarLista();
+  }
+  public atualizarLista(): void {
+    this._taskService
+      .getTasks()
+      .pipe(take(1))
+      .subscribe({
+        next: (result: TaskType[]) => {
+          this.listTask = result;
+        },
+      });
   }
   onAddTask(task: Task) {
     task.id = this.id;
     this.id++;
-    this.listTask.push(task);
-    console.log(this.listTask);
+    //this.listTask.push(task);
+    this._taskService
+      .postTask(task)
+      .pipe(take(1))
+      .subscribe({
+        next: (result: any) => {},
+      });
+    this.atualizarLista();
     return;
   }
 
   onEditTask(task: Task | any) {
-    console.log(task);
-    console.log(task.id);
+    this.taskEditar = task;
     this.selectedTask = task;
     for (let i = 0; i < this.listTask.length; i++) {
       if (this.listTask[i].id === task.id) {
-        this.listTask = this.listTask
-          .slice(0, i)
-          .concat([task])
-          .concat(this.listTask.slice(i + 1));
-        console.log(this.listTask);
         this.listTask[i] = task;
-        console.log(this.listTask);
         break;
       }
     }

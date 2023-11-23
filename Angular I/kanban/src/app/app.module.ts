@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TaskListComponent } from './components/task-list/task-list.component';
 import { CurrencyFormatPipe } from './pipes/currency-format.pipe';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,11 +13,12 @@ import { ColunaQuadroComponent } from './components/coluna-quadro/coluna-quadro.
 import { QuadroComponent } from './components/quadro/quadro.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TaskFormReativoComponent } from './components/task-form-reativo/task-form-reativo.component';
+import { AppService } from './app.service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
     TaskFormComponent,
-    TaskListComponent,
     CurrencyFormatPipe,
     TaskDetailComponent,
     DateGreaterThanTodayDirective,
@@ -33,8 +33,9 @@ import { TaskFormReativoComponent } from './components/task-form-reativo/task-fo
     BrowserAnimationsModule,
     NgbModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

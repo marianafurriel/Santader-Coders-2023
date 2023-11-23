@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Task } from 'src/models/task.model';
+import { TaskType } from 'src/types/taskType';
 
 @Component({
   selector: 'app-task-form-reativo',
@@ -15,7 +16,7 @@ import { Task } from 'src/models/task.model';
   styleUrls: ['./task-form-reativo.component.scss'],
 })
 export class TaskFormReativoComponent {
-  @Input() taskEditar: Task | null = null;
+  @Input() taskEditar: TaskType | null = null;
 
   public formTask: FormGroup = this.formBuilder.group({
     title: ['', Validators.required], //primeiro item é o valor default
@@ -34,12 +35,10 @@ export class TaskFormReativoComponent {
     return this.formTask.get('tags') as FormArray;
   }
 
-  public newTask = new Task();
-  // tags: string[] = [];
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnChanges() {
-    this.formTask.patchValue({ ...this.editTask });
+    this.formTask.patchValue({ ...this.taskEditar });
     // this.formTask = this.formBuilder.group({
     //   id: [this.taskEditar?.id],
     //   title: [this.taskEditar?.title, Validators.required], //primeiro item é o valor default
@@ -68,10 +67,10 @@ export class TaskFormReativoComponent {
     });
   }
 
-  submitTask(task = this.newTask) {
+  submitTask(edit = false) {
     if (this.formTask.invalid) return;
 
-    if (this.taskEditar) {
+    if (edit) {
       this.editTask.emit(this.formTask.value);
     } else {
       this.addTask.emit(this.formTask.value);
@@ -83,6 +82,7 @@ export class TaskFormReativoComponent {
       date: ['', Validators.required],
       status: ['toDo', Validators.required],
       tags: this.formBuilder.array([]),
+      valor: [0, Validators.required],
       color: ['bg-primary-subtle'],
     });
   }
