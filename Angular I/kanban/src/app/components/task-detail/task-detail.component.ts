@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Task } from 'src/models/task.model';
+import { TaskType } from 'src/types/taskType';
 
 @Component({
   selector: 'app-task-detail',
@@ -7,15 +7,19 @@ import { Task } from 'src/models/task.model';
   styleUrls: ['./task-detail.component.scss'],
 })
 export class TaskDetailComponent {
-  @Input() task!: Task;
+  @Input() task!: TaskType;
   @Output() closeDetail = new EventEmitter();
   @Output() editar = new EventEmitter();
+  @Output() deletar = new EventEmitter();
 
   close() {
     this.closeDetail.emit();
   }
 
-  editarHandle(task: Task) {
+  editarHandle(task: TaskType) {
     this.editar.emit(task);
+  }
+  deletarHandle(task: TaskType) {
+    this.deletar.emit(task);
   }
 }

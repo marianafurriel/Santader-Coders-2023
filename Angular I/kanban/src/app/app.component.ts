@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
-import { Task } from 'src/models/task.model';
 import { AppService } from './app.service';
 import { TaskType } from 'src/types/taskType';
 // import { AppService } from '/app.service';
@@ -12,10 +11,10 @@ import { TaskType } from 'src/types/taskType';
 })
 export class AppComponent implements OnInit {
   id = 0;
-  taskEditar: Task | null = null;
-  taskLog: Task[] = [];
-  listTask: Task[] = [];
-  selectedTask: Task | null = null;
+  taskEditar: TaskType | null = null;
+  taskLog: TaskType[] = [];
+  listTask: TaskType[] = [];
+  selectedTask: TaskType | null = null;
 
   constructor(private _taskService: AppService) {}
 
@@ -29,12 +28,11 @@ export class AppComponent implements OnInit {
       .subscribe({
         next: (result: TaskType[]) => {
           this.listTask = result;
+          console.log('atualizou a');
         },
       });
   }
-  onAddTask(task: Task) {
-    task.id = this.id;
-    this.id++;
+  onAddTask(task: TaskType) {
     //this.listTask.push(task);
     this._taskService
       .postTask(task)
@@ -46,31 +44,45 @@ export class AppComponent implements OnInit {
     return;
   }
 
-  onEditTask(task: Task | any) {
+  onEditTask(task: TaskType) {
+    console.log('ONEDIT');
     this.taskEditar = task;
     this.selectedTask = task;
-    for (let i = 0; i < this.listTask.length; i++) {
-      if (this.listTask[i].id === task.id) {
-        this.listTask[i] = task;
-        break;
-      }
-    }
-    for (let i = 0; i < this.taskLog.length; i++) {
-      if (this.taskLog[i].id === task.id) {
-        this.taskLog[i] = task;
-      }
-    }
-    this.taskEditar = null;
+    this._taskService
+      .updateTask(task)
+      .pipe(take(1))
+      .subscribe({
+        next: (result: any) => {
+          this.atualizarLista();
+          this.taskEditar = null;
+        },
+        error: () => {
+          console.log('deu erro :/');
+        },
+      });
   }
 
-  handleTask(task: Task) {
+  handleTask(task: TaskType) {
     this.taskLog.push(task);
     this.selectedTask = task;
-    console.log(task);
   }
 
-  editarTask(task: Task) {
+  editarTask(task: TaskType) {
     this.taskEditar = task;
+  }
+
+  deletarTask(task: TaskType) {
+    if (confirm('Deletar task?')) {
+      this._taskService
+        .deleteTask(task)
+        .pipe(take(1))
+        .subscribe({
+          next: (result: any) => {
+            this.atualizarLista();
+            this.selectedTask = null;
+          },
+        });
+    }
   }
 
   fecharDetalhes() {

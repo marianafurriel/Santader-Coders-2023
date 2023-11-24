@@ -6,7 +6,7 @@
     <!-- <app-task-form (addTask)="onAddTask($event)" class="offset-1 col-4"></app-task-form> -->
     <div *ngIf="selectedTask" class="col-4 offset-2 align-self-center">
       <app-task-detail [task]="selectedTask" (closeDetail)="fecharDetalhes()" (editar)="
-        editarTask($event)"></app-task-detail>
+        editarTask($event)" (deletar)="deletarTask($event)"></app-task-detail>
     </div>
   </div>
 
@@ -20,6 +20,6 @@
         (handleTask)="handleTask($event)"></app-coluna-quadro>
     </div>
   </div>
-  <app-coluna-quadro status="Log" [tasks]='taskLog' (handleTask)="handleTask($event)"></app-coluna-quadro>
+  <!-- <app-coluna-quadro status="Log" [tasks]='taskLog' (handleTask)="handleTask($event)"></app-coluna-quadro> -->
 
 </div>

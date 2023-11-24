@@ -8,7 +8,7 @@ import {
   SimpleChange,
   SimpleChanges,
 } from '@angular/core';
-import { Task } from 'src/models/task.model';
+import { TaskType } from 'src/types/taskType';
 
 @Component({
   selector: 'app-coluna-quadro',
@@ -17,12 +17,12 @@ import { Task } from 'src/models/task.model';
 })
 export class ColunaQuadroComponent {
   @Input() status!: string;
-  @Input() tasks: Task[] = [];
+  @Input() tasks: TaskType[] = [];
   @Output() handleTask = new EventEmitter();
 
-  tasksFiltradas: Task[] = [];
+  tasksFiltradas: TaskType[] = [];
 
-  selectedTask(task: Task) {
+  selectedTask(task: TaskType) {
     this.handleTask.emit(task);
   }
 }

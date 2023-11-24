@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Task } from 'src/models/task.model';
+import { TaskType } from 'src/types/taskType';
 
 @Component({
   selector: 'app-quadro',
@@ -7,5 +7,5 @@ import { Task } from 'src/models/task.model';
   styleUrls: ['./quadro.component.scss'],
 })
 export class QuadroComponent {
-  @Input() tasks!: Task[];
+  @Input() tasks!: TaskType[];
 }

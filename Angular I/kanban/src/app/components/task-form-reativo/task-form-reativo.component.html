@@ -66,6 +66,7 @@
     </div>
 
     <button *ngIf="!taskEditar" type="submit" class="btn btn-info px-4" (click)='submitTask()'>Adicionar</button>
-    <button *ngIf="taskEditar" type="submit" class="btn btn-info px-4" (click)='submitTask(true)'>Editar</button>
+    <button *ngIf="taskEditar" type="submit" class="btn btn-info px-4"
+      (click)='submitTask(taskEditar._id,true)'>Editar</button>
   </form>
 </div>
